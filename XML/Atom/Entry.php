@@ -152,6 +152,12 @@ class XML_Atom_Entry extends XML_Atom_Element
         return $document;
     }
 
+    public function __toString()
+    {
+        $document = $this->getDocument();
+        return $document->saveXML();
+    }
+
     protected function _createNode(DOMDocument $document)
     {
         if ($document->documentElement->nodeName == 'feed') {

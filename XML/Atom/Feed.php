@@ -27,6 +27,12 @@ class XML_Atom_Feed extends XML_Atom_Source
         return $document;
     }
 
+    public function __toString()
+    {
+        $document = $this->getDocument();
+        return $document->saveXML();
+    }
+
     public function toSource()
     {
         $source = new XML_Atom_Source($this->_id, $this->_title,
