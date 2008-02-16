@@ -6,19 +6,19 @@ require_once 'XML/Atom/Element.php';
 
 abstract class XML_Atom_Text extends XML_Atom_Element
 {
-    protected $_content = '';
+    protected $_text = '';
     protected $_type = '';
 
-    public function __construct($content, $type = 'text', $language = '')
+    public function __construct($text, $type = 'text', $language = '')
     {
-        $this->setContent($content);
+        $this->setText($text);
         $this->setType($type);
         $this->setLanguage($language);
     }
 
-    public function setContent($content)
+    public function setText($text)
     {
-        $this->_content = strval($content);
+        $this->_text = strval($text);
     }
 
     public function setType($type)
@@ -32,7 +32,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
 
         $node->setAttribute('type', $this->_type);
 
-        $cdata_node = $document->createCDATASection($this->_content);
+        $cdata_node = $document->createCDATASection($this->_text);
         $node->appendChild($cdata_node);
     }
 }
