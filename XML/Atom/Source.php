@@ -8,15 +8,17 @@ require_once 'XML/Atom/Category.php';
 require_once 'XML/Atom/Contributor.php';
 require_once 'XML/Atom/Generator.php';
 require_once 'XML/Atom/Link.php';
+require_once 'XML/Atom/Subtitle.php';
+require_once 'XML/Atom/Title.php';
 require_once 'XML/Atom/Updated.php';
 require_once 'Date.php';
 
 class XML_Atom_Source extends XML_Atom_Element
 {
     protected $_id = '';
-    protected $_title = '';
+    protected $_title = null;
     protected $_updated = null;
-    protected $_sub_title = '';
+    protected $_subtitle = null;
     protected $_icon = '';
     protected $_logo = '';
     protected $_rights = '';
@@ -38,8 +40,12 @@ class XML_Atom_Source extends XML_Atom_Element
         $this->_id = strval($id);
     }
 
-    public function setTitle($title)
+    public function setTitle($title, $type = 'text')
     {
+        if (!($title instanceof XML_Atom_Title)) {
+            $title = new XML_Atom_Title($title, $type);
+        }
+
         $this->_title = $title;
     }
 
@@ -52,9 +58,13 @@ class XML_Atom_Source extends XML_Atom_Element
         $this->_updated = $updated;
     }
 
-    public function setSubTitle($sub_title)
+    public function setSubtitle($subtitle, $type = 'text')
     {
-        $this->_sub_title = strval($sub_title);
+        if (!($subtitle === null || $subtitle instanceof XML_Atom_Subtitle)) {
+            $subtitle = new XML_Atom_Subtitle($subtitle, $type);
+        }
+
+        $this->_subtitle = $subtitle;
     }
 
     public function setIcon($icon)
@@ -177,18 +187,11 @@ class XML_Atom_Source extends XML_Atom_Element
             $node->appendChild($rights_node);
         }
 
-        if ($this->_sub_title != '') {
-            $sub_title_text_node = $document->createTextNode($this->_sub_title);
-            $sub_title_node = $document->createElement('sub_title');
-            $sub_title_node->appendChild($sub_title_text_node);
-            $node->appendChild($sub_title_node);
+        if ($this->_subtitle instanceof XML_Atom_Subtitle) {
+            $node->appendChild($this->_subtitle->_getNode($document));
         }
 
-        $title_text_node = $document->createTextNode($this->_title);
-        $title_node = $document->createElement('title');
-        $title_node->appendChild($title_text_node);
-        $node->appendChild($title_node);
-
+        $node->appendChild($this->_title->_getNode($document));
         $node->appendChild($this->_updated->_getNode($document));
     }
 }

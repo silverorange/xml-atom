@@ -12,12 +12,13 @@ require_once 'XML/Atom/Link.php';
 require_once 'XML/Atom/Published.php';
 require_once 'XML/Atom/Source.php';
 require_once 'XML/Atom/Summary.php';
+require_once 'XML/Atom/Title.php';
 require_once 'XML/Atom/Updated.php';
 
 class XML_Atom_Entry extends XML_Atom_Element
 {
     protected $_id = '';
-    protected $_title = '';
+    protected $_title = null;
     protected $_updated = null;
     protected $_published = null;
     protected $_content = null;
@@ -41,8 +42,12 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_id = strval($id);
     }
 
-    public function setTitle($title)
+    public function setTitle($title, $type = 'text')
     {
+        if (!($title instanceof XML_Atom_Title)) {
+            $title = new XML_Atom_Title($title, $type);
+        }
+
         $this->_title = $title;
     }
 
@@ -217,11 +222,7 @@ class XML_Atom_Entry extends XML_Atom_Element
             $node->appendChild($this->_summary->_getNode($document));
         }
 
-        $title_text_node = $document->createTextNode($this->_title);
-        $title_node = $document->createElement('title');
-        $title_node->appendChild($title_text_node);
-        $node->appendChild($title_node);
-
+        $node->appendChild($this->_title->_getNode($document));
         $node->appendChild($this->_updated->_getNode($document));
     }
 }
