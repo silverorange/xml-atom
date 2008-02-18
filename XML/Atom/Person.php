@@ -4,11 +4,23 @@
 
 require_once 'XML/Atom/Element.php';
 
+/**
+ * Person
+ *
+ * @package   XML-Atom
+ * @copyright 2008 silverorange
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ */
 abstract class XML_Atom_Person extends XML_Atom_Element
 {
+    // {{{ protected properties
+
     protected $_name = '';
     protected $_uri = '';
     protected $_email = '';
+
+    // }}}
+    // {{{ public function __construct()
 
     public function __construct($name, $uri = '', $email = '')
     {
@@ -17,20 +29,32 @@ abstract class XML_Atom_Person extends XML_Atom_Element
         $this->setEmail($email);
     }
 
+    // }}}
+    // {{{ public function setName()
+
     public function setName($name)
     {
         $this->_name = strval($name);
     }
+
+    // }}}
+    // {{{ public function setUri()
 
     public function setUri($uri)
     {
         $this->_uri = strval($uri);
     }
 
+    // }}}
+    // {{{ public function setEmail()
+
     public function setEmail($email)
     {
         $this->_email = strval($email);
     }
+
+    // }}}
+    // {{{ protected function _buildNode()
 
     protected function _buildNode(DOMNode $node)
     {
@@ -64,6 +88,8 @@ abstract class XML_Atom_Person extends XML_Atom_Element
             $node->appendChild($email_node);
         }
     }
+
+    // }}}
 }
 
 ?>

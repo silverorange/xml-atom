@@ -5,14 +5,29 @@
 require_once 'XML/Atom/Entry.php';
 require_once 'XML/Atom/Source.php';
 
+/**
+ * Feed
+ *
+ * @package   XML-Atom
+ * @copyright 2008 silverorange
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ */
 class XML_Atom_Feed extends XML_Atom_Source
 {
+    // {{{ protected properties
+
     protected $_entries = array();
+
+    // }}}
+    // {{{ public function addEntry()
 
     public function addEntry(XML_Atom_Entry $entry)
     {
         $this->_entries[] = $entry;
     }
+
+    // }}}
+    // {{{ public function getDocument()
 
     public function getDocument($encoding = 'utf-8')
     {
@@ -27,11 +42,17 @@ class XML_Atom_Feed extends XML_Atom_Source
         return $document;
     }
 
+    // }}}
+    // {{{ public function __toString()
+
     public function __toString()
     {
         $document = $this->getDocument();
         return $document->saveXML();
     }
+
+    // }}}
+    // {{{ public function toSource()
 
     public function toSource()
     {
@@ -61,6 +82,9 @@ class XML_Atom_Feed extends XML_Atom_Source
         }
     }
 
+    // }}}
+    // {{{ protected function _buildNode()
+
     protected function _buildNode(DOMNode $node)
     {
         parent::_buildNode($node);
@@ -72,11 +96,16 @@ class XML_Atom_Feed extends XML_Atom_Source
         }
     }
 
+    // }}}
+    // {{{ protected function _createNode()
+
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->documentElement;
     }
+
+    // }}}
 }
 
 ?>

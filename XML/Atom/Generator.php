@@ -4,11 +4,23 @@
 
 require_once 'XML/Atom/Element.php';
 
+/**
+ * Generator
+ *
+ * @package   XML-Atom
+ * @copyright 2008 silverorange
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ */
 class XML_Atom_Generator extends XML_Atom_Element
 {
+    // {{{ protected properties
+
     protected $_generator = '';
     protected $_uri = '';
     protected $_version = '';
+
+    // }}}
+    // {{{ public function __construct()
 
     public function __construct($generator, $uri = '', $version = '')
     {
@@ -17,20 +29,32 @@ class XML_Atom_Generator extends XML_Atom_Element
         $this->setVersion($version);
     }
 
+    // }}}
+    // {{{ public function setGenerator()
+
     public function setGenerator($generator)
     {
         $this->_generator = strval($generator);
     }
+
+    // }}}
+    // {{{ public function setUri()
 
     public function setUri($uri)
     {
         $this->_uri = strval($uri);
     }
 
+    // }}}
+    // {{{ public function setVersion()
+
     public function setVersion($version)
     {
         $this->_version = strval($version);
     }
+
+    // }}}
+    // {{{ protected function _createNode()
 
     protected function _createNode(DOMNode $context_node)
     {
@@ -38,6 +62,9 @@ class XML_Atom_Generator extends XML_Atom_Element
         return $document->createElement(
             $this->_getAtomNodeName($context_node, 'generator'));
     }
+
+    // }}}
+    // {{{ protected function _buildNode()
 
     protected function _buildNode(DOMNode $node)
     {
@@ -56,6 +83,8 @@ class XML_Atom_Generator extends XML_Atom_Element
         $generator_content = $document->createTextNode($this->_generator);
         $node->appendChild($generator_content);
     }
+
+    // }}}
 }
 
 ?>

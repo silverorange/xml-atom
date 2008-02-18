@@ -15,8 +15,17 @@ require_once 'XML/Atom/Summary.php';
 require_once 'XML/Atom/Title.php';
 require_once 'XML/Atom/Updated.php';
 
+/**
+ * Entry
+ *
+ * @package   XML-Atom
+ * @copyright 2008 silverorange
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ */
 class XML_Atom_Entry extends XML_Atom_Element
 {
+    // {{{ protected properties
+
     protected $_id = '';
     protected $_title = null;
     protected $_updated = null;
@@ -30,6 +39,9 @@ class XML_Atom_Entry extends XML_Atom_Element
     protected $_categories = array();
     protected $_links = array();
 
+    // }}}
+    // {{{ public function __construct()
+
     public function __construct($id, $title, $updated = null)
     {
         $this->setId($id);
@@ -37,10 +49,16 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->setUpdated($updated);
     }
 
+    // }}}
+    // {{{ public function setId()
+
     public function setId($id)
     {
         $this->_id = strval($id);
     }
+
+    // }}}
+    // {{{ public function setTitle()
 
     public function setTitle($title, $type = 'text')
     {
@@ -51,6 +69,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_title = $title;
     }
 
+    // }}}
+    // {{{ public function setUpdated()
+
     public function setUpdated($updated)
     {
         if (!($updated instanceof XML_Atom_Updated)) {
@@ -59,6 +80,9 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         $this->_updated = $updated;
     }
+
+    // }}}
+    // {{{ public function setPublished()
 
     public function setPublished($published)
     {
@@ -70,6 +94,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_published = $published;
     }
 
+    // }}}
+    // {{{ public function setContent()
+
     public function setContent($content, $type = 'text', $language = '')
     {
         if (!($content === null || $content instanceof XML_Atom_Content)) {
@@ -78,6 +105,9 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         $this->_content = $content;
     }
+
+    // }}}
+    // {{{ public function setSummary()
 
     public function setSummary($summary, $type = 'text', $language = '')
     {
@@ -88,10 +118,16 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_summary = $summary;
     }
 
+    // }}}
+    // {{{ public function setRights()
+
     public function setRights($rights)
     {
         $this->_rights = strval($rights);
     }
+
+    // }}}
+    // {{{ public function setSource()
 
     public function setSource($source)
     {
@@ -104,6 +140,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_source = $source;
     }
 
+    // }}}
+    // {{{ public function addAuthor()
+
     public function addAuthor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Author) {
@@ -115,6 +154,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_authors[] = $author;
     }
 
+    // }}}
+    // {{{ public function addContributor()
+
     public function addContributor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Contributor) {
@@ -125,6 +167,9 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         $this->_contributors[] = $contributor;
     }
+
+    // }}}
+    // {{{ public function addCategory()
 
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
@@ -139,10 +184,16 @@ class XML_Atom_Entry extends XML_Atom_Element
         $this->_categories[] = $category;
     }
 
+    // }}}
+    // {{{ public function addLink()
+
     public function addLink(XML_Atom_Link $link)
     {
         $this->_links[] = $link;
     }
+
+    // }}}
+    // {{{ public function getDocument()
 
     public function getDocument($encoding = 'utf-8')
     {
@@ -157,11 +208,17 @@ class XML_Atom_Entry extends XML_Atom_Element
         return $document;
     }
 
+    // }}}
+    // {{{ public function __toString()
+
     public function __toString()
     {
         $document = $this->getDocument();
         return $document->saveXML();
     }
+
+    // }}}
+    // {{{ protected function _createNode()
 
     protected function _createNode(DOMNode $context_node)
     {
@@ -175,6 +232,9 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         return $node;
     }
+
+    // }}}
+    // {{{ protected function _buildNode()
 
     protected function _buildNode(DOMNode $node)
     {
@@ -231,6 +291,8 @@ class XML_Atom_Entry extends XML_Atom_Element
         $node->appendChild($this->_title->_getNode($node));
         $node->appendChild($this->_updated->_getNode($node));
     }
+
+    // }}}
 }
 
 ?>

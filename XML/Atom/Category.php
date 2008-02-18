@@ -4,11 +4,23 @@
 
 require_once 'XML/Atom/Element.php';
 
+/**
+ * Category
+ *
+ * @package   XML-Atom
+ * @copyright 2008 silverorange
+ * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ */
 class XML_Atom_Category extends XML_Atom_Element
 {
+    // {{{ protected properties
+
     protected $_term = '';
     protected $_scheme = '';
     protected $_label = '';
+
+    // }}}
+    // {{{ public function __construct()
 
     public function __construct($term, $scheme = '', $label = '',
         $laguage = '')
@@ -18,15 +30,24 @@ class XML_Atom_Category extends XML_Atom_Element
         $this->setLabel($label, $language);
     }
 
+    // }}}
+    // {{{ public function setTerm()
+
     public function setTerm($term)
     {
         $this->_term = strval($term);
     }
 
+    // }}}
+    // {{{ public function setScheme()
+
     public function setScheme($scheme)
     {
         $this->_scheme = strval($scheme);
     }
+
+    // }}}
+    // {{{ public function setLabel()
 
     public function setLabel($label, $language = '')
     {
@@ -34,12 +55,18 @@ class XML_Atom_Category extends XML_Atom_Element
         $this->setLanguage($language);
     }
 
+    // }}}
+    // {{{ protected function _createNode()
+
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElement(
             $this->_getAtomNodeName($context_node, 'category'));
     }
+
+    // }}}
+    // {{{ protected function _buildNode()
 
     protected function _buildNode(DOMNode $node)
     {
@@ -58,6 +85,7 @@ class XML_Atom_Category extends XML_Atom_Element
                 $this->_label);
         }
     }
+    // }}}
 }
 
 ?>
