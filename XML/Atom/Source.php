@@ -168,7 +168,7 @@ class XML_Atom_Source extends XML_Atom_Element
 
         $id_text_node = $document->createTextNode($this->_id);
         $id_node = $document->createElement(
-            $this->_getAtomNodeName($context_node, 'id'));
+            $this->_getAtomNodeName($node, 'id'));
 
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
@@ -180,7 +180,7 @@ class XML_Atom_Source extends XML_Atom_Element
         if ($this->_logo != '') {
             $logo_text_node = $document->createTextNode($this->_logo);
             $logo_node = $document->createElement(
-                $this->_getAtomNodeName($context_node, 'logo'));
+                $this->_getAtomNodeName($node, 'logo'));
 
             $logo_node->appendChild($logo_text_node);
             $node->appendChild($logo_node);
@@ -189,7 +189,7 @@ class XML_Atom_Source extends XML_Atom_Element
         if ($this->_rights != '') {
             $rights_text_node = $document->createTextNode($this->_rights);
             $rights_node = $document->createElement(
-                $this->_getAtomNodeName($context_node, 'rights'));
+                $this->_getAtomNodeName($node, 'rights'));
 
             $rights_node->appendChild($rights_text_node);
             $node->appendChild($rights_node);

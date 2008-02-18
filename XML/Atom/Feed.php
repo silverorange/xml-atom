@@ -68,7 +68,7 @@ class XML_Atom_Feed extends XML_Atom_Source
         $document = $node->ownerDocument;
 
         foreach ($this->_entries as $entry) {
-            $node->appendChild($entry->_getNode($document));
+            $node->appendChild($entry->_getNode($node));
         }
     }
 

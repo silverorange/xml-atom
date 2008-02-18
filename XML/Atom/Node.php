@@ -6,7 +6,7 @@ abstract class XML_Atom_Node
 {
     const NAMESPACE = 'http://www.w3.org/2005/Atom';
 
-    abstract protected function _createNode(DOMDocument $document);
+    abstract protected function _createNode(DOMNode $context_node);
 
     abstract protected function _buildNode(DOMNode $node);
 
@@ -19,8 +19,8 @@ abstract class XML_Atom_Node
 
     protected function _getAtomNodeName(DOMNode $context_node, $name)
     {
-        $prefix = $context_node->lookupPrefix(AtomNode::NAMESPACE);
-        return = ($prefix === null) ? $name : $prefix . ':' . $name;
+        $prefix = $context_node->lookupPrefix(self::NAMESPACE);
+        return ($prefix === null) ? $name : $prefix . ':' . $name;
     }
 }
 
