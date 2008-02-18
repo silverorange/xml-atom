@@ -6,9 +6,11 @@ require_once 'XML/Atom/Text.php';
 
 class XML_Atom_Summary extends XML_Atom_Text
 {
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
-        return $document->createElement('summary');
+        $document = $context_node->ownerDocument;
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'summary'));
     }
 }
 

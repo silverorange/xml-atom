@@ -30,7 +30,8 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $node->setAttribute('type', $this->_type);
+        $node->setAttribute($this->_getAtomNodeName($node, 'type'),
+            $this->_type);
 
         $cdata_node = $document->createCDATASection($this->_text);
         $node->appendChild($cdata_node);

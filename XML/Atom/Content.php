@@ -9,7 +9,8 @@ class XML_Atom_Content extends XML_Atom_Text
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement('content');
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'content'));
     }
 }
 

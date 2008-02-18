@@ -6,9 +6,11 @@ require_once 'XML/Atom/Date.php';
 
 class XML_Atom_Updated extends XML_Atom_Date
 {
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
-        return $document->createElement('updated');
+        $document = $context_node->ownerDocument;
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'updated'));
     }
 }
 

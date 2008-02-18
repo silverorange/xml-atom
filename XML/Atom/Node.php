@@ -16,6 +16,12 @@ abstract class XML_Atom_Node
         $this->_buildNode($node);
         return $node;
     }
+
+    protected function _getAtomNodeName(DOMNode $context_node, $name)
+    {
+        $prefix = $context_node->lookupPrefix(AtomNode::NAMESPACE);
+        return = ($prefix === null) ? $name : $prefix . ':' . $name;
+    }
 }
 
 ?>

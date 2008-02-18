@@ -36,7 +36,8 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $name_node = $document->createElement('name');
+        $name_node = $document->createElement(
+            $this->_getAtomNodeName($node, 'name'));
 
         $name_content = $document->createTextNode($this->_name);
         $name_node->appendChild($name_content);
@@ -44,7 +45,8 @@ abstract class XML_Atom_Person extends XML_Atom_Element
         $node->appendChild($name_node);
 
         if ($this->_uri != '') {
-            $uri_node = $document->createElement('uri');
+            $uri_node = $document->createElement(
+                $this->_getAtomNodeName($node, 'uri'));
 
             $uri_content = $document->createTextNode($this->_uri);
             $uri_node->appendChild($uri_content);
@@ -53,7 +55,8 @@ abstract class XML_Atom_Person extends XML_Atom_Element
         }
 
         if ($this->_email != '') {
-            $email_node = $document->createElement('email');
+            $email_node = $document->createElement(
+                $this->_getAtomNodeName($node, 'email'));
 
             $email_content = $document->createTextNode($this->_email);
             $email_node->appendChild($email_content);

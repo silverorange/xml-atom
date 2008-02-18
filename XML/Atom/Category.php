@@ -37,21 +37,25 @@ class XML_Atom_Category extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement('category');
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'category'));
     }
 
     protected function _buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        $node->setAttribute('term', $this->_term);
+        $node->setAttribute($this->_getAtomNodeName($node, 'term'),
+            $this->_term);
 
         if ($this->_scheme != '') {
-            $node->setAttribute('scheme', $this->_scheme);
+            $node->setAttribute($this->_getAtomNodeName($node, 'scheme'),
+                $this->_scheme);
         }
 
         if ($this->_label != '') {
-            $node->setAttribute('label', $this->_label);
+            $node->setAttribute($this->_getAtomNodeName($node, 'label'),
+                $this->_label);
         }
     }
 }

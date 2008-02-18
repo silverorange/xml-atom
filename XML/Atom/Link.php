@@ -56,31 +56,39 @@ class XML_Atom_Link extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement('link');
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'link'));
     }
 
     protected function _buildNode(DOMNode $node)
     {
-        $node->setAttribute('href', $this->_href);
+        $node->setAttribute($this->_getAtomNodeName($node, 'href'),
+            $this->_href);
 
         if ($this->_rel != '') {
             $node->setAttribute('rel', $this->_rel);
+            $node->setAttribute($this->_getAtomNodeName($node, 'rel'),
+                $this->_rel);
         }
 
         if ($this->_type != '') {
-            $node->setAttribute('type', $this->_type);
+            $node->setAttribute($this->_getAtomNodeName($node, 'type'),
+                $this->_type);
         }
 
         if ($this->_hreflang != '') {
-            $node->setAttribute('hreflang', $this->_hreflang);
+            $node->setAttribute($this->_getAtomNodeName($node, 'hreflang'),
+                $this->_hreflang);
         }
 
         if ($this->_title != '') {
-            $node->setAttribute('title', $this->_title);
+            $node->setAttribute($this->_getAtomNodeName($node, 'title'),
+                $this->_title);
         }
 
         if ($this->_length !== null) {
-            $node->setAttribute('length', $this->_length);
+            $node->setAttribute($this->_getAtomNodeName($node, 'length'),
+                $this->_length);
         }
     }
 }

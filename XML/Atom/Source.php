@@ -132,9 +132,11 @@ class XML_Atom_Source extends XML_Atom_Element
         $this->_links[] = $link;
     }
 
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
-        return $document->createElement('source');
+        $document = $context_node->ownerDocument;
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'source'));
     }
 
     protected function _buildNode(DOMNode $node)
@@ -142,19 +144,19 @@ class XML_Atom_Source extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         foreach ($this->_authors as $author) {
-            $node->appendChild($author->_getNode($document));
+            $node->appendChild($author->_getNode($node));
         }
 
         foreach ($this->_categories as $category) {
-            $node->appendChild($category->_getNode($document));
+            $node->appendChild($category->_getNode($node));
         }
 
         foreach ($this->_contributors as $contributor) {
-            $node->appendChild($contributor->_getNode($document));
+            $node->appendChild($contributor->_getNode($node));
         }
 
         if ($this->_generator instanceof XML_Atom_Generator) {
-            $node->appendChild($this->_generator->_getNode($document));
+            $node->appendChild($this->_generator->_getNode($node));
         }
 
         if ($this->_icon != '') {
@@ -165,34 +167,40 @@ class XML_Atom_Source extends XML_Atom_Element
         }
 
         $id_text_node = $document->createTextNode($this->_id);
-        $id_node = $document->createElement('id');
+        $id_node = $document->createElement(
+            $this->_getAtomNodeName($context_node, 'id'));
+
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
 
         foreach ($this->_links as $link) {
-            $node->appendChild($link->_getNode($document));
+            $node->appendChild($link->_getNode($node));
         }
 
         if ($this->_logo != '') {
             $logo_text_node = $document->createTextNode($this->_logo);
-            $logo_node = $document->createElement('logo');
+            $logo_node = $document->createElement(
+                $this->_getAtomNodeName($context_node, 'logo'));
+
             $logo_node->appendChild($logo_text_node);
             $node->appendChild($logo_node);
         }
 
         if ($this->_rights != '') {
             $rights_text_node = $document->createTextNode($this->_rights);
-            $rights_node = $document->createElement('rights');
+            $rights_node = $document->createElement(
+                $this->_getAtomNodeName($context_node, 'rights'));
+
             $rights_node->appendChild($rights_text_node);
             $node->appendChild($rights_node);
         }
 
         if ($this->_subtitle instanceof XML_Atom_Subtitle) {
-            $node->appendChild($this->_subtitle->_getNode($document));
+            $node->appendChild($this->_subtitle->_getNode($node));
         }
 
-        $node->appendChild($this->_title->_getNode($document));
-        $node->appendChild($this->_updated->_getNode($document));
+        $node->appendChild($this->_title->_getNode($node));
+        $node->appendChild($this->_updated->_getNode($node));
     }
 }
 

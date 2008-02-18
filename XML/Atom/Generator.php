@@ -35,7 +35,8 @@ class XML_Atom_Generator extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement('generator');
+        return $document->createElement(
+            $this->_getAtomNodeName($context_node, 'generator'));
     }
 
     protected function _buildNode(DOMNode $node)
@@ -43,11 +44,13 @@ class XML_Atom_Generator extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         if ($this->_uri != '') {
-            $node->setAttribute('uri', $this->_uri);
+            $node->setAttribute($this->_getAtomNodeName($node, 'uri'),
+                $this->_uri);
         }
 
         if ($this->_version != '') {
-            $node->setAttribute('version', $this->_version);
+            $node->setAttribute($this->_getAtomNodeName($node, 'version'),
+                $this->_version);
         }
 
         $generator_content = $document->createTextNode($this->_generator);
