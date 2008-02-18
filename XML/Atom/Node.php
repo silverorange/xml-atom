@@ -10,10 +10,10 @@ abstract class XML_Atom_Node
 
     abstract protected function _buildNode(DOMNode $node);
 
-    protected function _getNode(DOMDocument $document)
+    protected function _getNode(DOMNode $context_node)
     {
-        $node = $this->createNode($document);
-        $this->buildNode($node);
+        $node = $this->_createNode($context_node);
+        $this->_buildNode($node);
         return $node;
     }
 }

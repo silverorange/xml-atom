@@ -152,7 +152,7 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         $document->encoding = $encoding;
 
-        $document_element = $this->_getNode($document);
+        $document_element = $this->_getNode($document->documentElement);
 
         return $document;
     }
@@ -163,8 +163,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         return $document->saveXML();
     }
 
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
+        $document = $context_node->ownerDocument;
         if ($document->documentElement->nodeName == 'feed') {
             $node = $document->createElement('entry');
         } else {
@@ -179,19 +180,19 @@ class XML_Atom_Entry extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         foreach ($this->_authors as $author) {
-            $node->appendChild($author->_getNode($document));
+            $node->appendChild($author->_getNode($node));
         }
 
         foreach ($this->_categories as $category) {
-            $node->appendChild($category->_getNode($document));
+            $node->appendChild($category->_getNode($node));
         }
 
         if ($this->_content instanceof XML_Atom_Content) {
-            $node->appendChild($this->_content->_getNode($document));
+            $node->appendChild($this->_content->_getNode($node));
         }
 
         foreach ($this->_contributors as $contributor) {
-            $node->appendChild($contributor->_getNode($document));
+            $node->appendChild($contributor->_getNode($node));
         }
 
         $id_text_node = $document->createTextNode($this->_id);
@@ -200,11 +201,11 @@ class XML_Atom_Entry extends XML_Atom_Element
         $node->appendChild($id_node);
 
         foreach ($this->_links as $link) {
-            $node->appendChild($link->_getNode($document));
+            $node->appendChild($link->_getNode($node));
         }
 
         if ($this->_published instanceof XML_Atom_Published) {
-            $node->appendChild($this->_published->_getNode($document));
+            $node->appendChild($this->_published->_getNode($node));
         }
 
         if ($this->_rights != '') {
@@ -215,15 +216,15 @@ class XML_Atom_Entry extends XML_Atom_Element
         }
 
         if ($this->_source instanceof XML_Atom_Source) {
-            $node->appendChild($this->_source->_getNode($document));
+            $node->appendChild($this->_source->_getNode($node));
         }
 
         if ($this->_summary instanceof XML_Atom_Summary) {
-            $node->appendChild($this->_summary->_getNode($document));
+            $node->appendChild($this->_summary->_getNode($node));
         }
 
-        $node->appendChild($this->_title->_getNode($document));
-        $node->appendChild($this->_updated->_getNode($document));
+        $node->appendChild($this->_title->_getNode($node));
+        $node->appendChild($this->_updated->_getNode($node));
     }
 }
 

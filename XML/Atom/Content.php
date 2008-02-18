@@ -6,8 +6,9 @@ require_once 'XML/Atom/Text.php';
 
 class XML_Atom_Content extends XML_Atom_Text
 {
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
+        $document = $context_node->ownerDocument;
         return $document->createElement('content');
     }
 }

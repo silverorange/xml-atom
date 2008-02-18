@@ -22,7 +22,7 @@ class XML_Atom_Feed extends XML_Atom_Source
 
         $document->encoding = $encoding;
 
-        $document_element = $this->_getNode($document);
+        $document_element = $this->_getNode($document->documentElement);
 
         return $document;
     }
@@ -72,8 +72,9 @@ class XML_Atom_Feed extends XML_Atom_Source
         }
     }
 
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
+        $document = $context_node->ownerDocument;
         return $document->documentElement;
     }
 }

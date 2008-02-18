@@ -34,8 +34,9 @@ class XML_Atom_Category extends XML_Atom_Element
         $this->setLanguage($language);
     }
 
-    protected function _createNode(DOMDocument $document)
+    protected function _createNode(DOMNode $context_node)
     {
+        $document = $context_node->ownerDocument;
         return $document->createElement('category');
     }
 

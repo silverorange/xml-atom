@@ -43,9 +43,9 @@ abstract class XML_Atom_Element extends XML_Atom_Node
         }
     }
 
-    protected function _getNode(DOMDocument $document)
+    protected function _getNode(DOMNode $context_node)
     {
-        $node = $this->_createNode($document);
+        $node = $this->_createNode($context_node);
 
         $this->_buildNamespaces($node);
         $this->_buildCommonAttributes($node);
