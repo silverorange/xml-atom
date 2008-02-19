@@ -15,16 +15,57 @@ class XML_Atom_Link extends XML_Atom_Element
 {
     // {{{ protected properties
 
+    /**
+     * The href of this node
+     *
+     * @var string
+     */
     protected $_href = '';
+
+    /**
+     * The relation of this node
+     *
+     * @var string
+     */
     protected $_rel = '';
+
+    /**
+     * The type of this node
+     *
+     * @var string
+     */
     protected $_type = '';
+
+    /**
+     * The href language of this node
+     *
+     * @var string
+     */
     protected $_hreflang = '';
+
+    /**
+     * The title of this node
+     *
+     * @var string
+     */
     protected $_title = '';
+
+    /**
+     * The length of this node
+     *
+     * @var string
+     */
     protected $_length = null;
 
     // }}}
     // {{{ public function __construct()
 
+    /**
+     * Contruct this XML_Atom_Link
+     *
+     * @param string $href the href to use.
+     * @param string $hreflang the href language to use.
+     */
     public function __construct($href, $hreflang = '')
     {
         $this->setHref($href);
@@ -34,6 +75,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setHref()
 
+    /**
+     * Set the href of this node.
+     *
+     * @param string $href the href to set this node to.
+     */
     public function setHref($href)
     {
         $this->_href = strval($href);
@@ -42,6 +88,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setHrefLanguage()
 
+    /**
+     * Set the href language of this node.
+     *
+     * @param string $hreflang the href language to set this node to.
+     */
     public function setHrefLanguage($hreflang)
     {
         $this->_hreflang = strval($hreflang);
@@ -50,6 +101,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setRelation()
 
+    /**
+     * Set the relation of this node.
+     *
+     * @param string $relation the relation to set this node to.
+     */
     public function setRelation($rel)
     {
         $this->_rel = strval($rel);
@@ -58,6 +114,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setType()
 
+    /**
+     * Set the type for this node.
+     *
+     * @param string $type the type to set this node to.
+     */
     public function setType($type)
     {
         $this->_type = strval($type);
@@ -66,6 +127,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setTitle()
 
+    /**
+     * Set the title of this node.
+     *
+     * @param string $title the title to set this node to.
+     */
     public function setTitle($title)
     {
         $this->_title = strval($title);
@@ -74,6 +140,11 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ public function setLength()
 
+    /**
+     * Set the length of this node.
+     *
+     * @param string $length the length to set this node to.
+     */
     public function setLength($length)
     {
         if ($length !== null) {
@@ -86,6 +157,14 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ protected function _createNode()
 
+    /**
+     * Create a link node
+     *
+     * @param DOMNode $context_node the parent node that will contain this
+     *   link node.
+     *
+     * @return DOMNode the new link node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
@@ -95,6 +174,12 @@ class XML_Atom_Link extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Build all the XML information contained inside a link node.
+     *
+     * @param DOMNode $node the link node that will contain the XML genereated
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'href', $this->_href);

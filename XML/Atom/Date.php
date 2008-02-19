@@ -16,11 +16,21 @@ abstract class XML_Atom_Date extends XML_Atom_Element
 {
     // {{{ protected properties
 
+    /**
+     * The date of this node
+     *
+     * @var Date
+     */
     protected $_date;
 
     // }}}
     // {{{ public function __construct()
 
+    /**
+     * Contruct this XML_Atom_Person
+     *
+     * @param string $date the date to use.
+     */
     public function __construct($date)
     {
         $this->setDate($date);
@@ -29,6 +39,11 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // }}}
     // {{{ public function setDate()
 
+    /**
+     * Set the date of this node
+     *
+     * @param mixed $date the date this node should use.
+     */
     public function setDate($date)
     {
         if (!($date instanceof Date)) {
@@ -41,6 +56,12 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Build all the XML information contained inside a date node.
+     *
+     * @param DOMNode $node the date node that will contain all the XML created
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;

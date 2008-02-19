@@ -15,6 +15,14 @@ class XML_Atom_Updated extends XML_Atom_Date
 {
     // {{{ protected function _createNode()
 
+    /**
+     * Create a updated date node
+     *
+     * @param DOMNode $context_node the parent node that will contain this
+     *   updated date node.
+     *
+     * @return DOMNode the new updated date node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;

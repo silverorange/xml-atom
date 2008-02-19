@@ -15,13 +15,35 @@ abstract class XML_Atom_Element extends XML_Atom_Node
 {
     // {{{ protected properties
 
+    /**
+     * The language of this node
+     *
+     * @var string
+     */
     protected $_language = '';
+
+    /**
+     * The base of this node
+     *
+     * @var string
+     */
     protected $_base = '';
+
+    /**
+     * An array of namespaces used for this node
+     *
+     * @var array()
+     */
     protected $_namespaces = array();
 
     // }}}
     // {{{ public function setBase()
 
+    /**
+     * Set the base of this node.
+     *
+     * @param string $base the base this node should use.
+     */
     public function setBase($base)
     {
         $this->_base = strval($base);
@@ -30,6 +52,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ public function setLanguage()
 
+    /**
+     * Set the language of this node.
+     *
+     * @param string $language the language this node should use.
+     */
     public function setLanguage($language)
     {
         $this->_language = strval($language);
@@ -38,6 +65,12 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ public function addNamespace()
 
+    /**
+     * Add a namespace to this node.
+     *
+     * @param string $prefix the prefix of this namespace.
+     * @param string $uri the URI of this namespace.
+     */
     public function addNamespace($prefix, $uri)
     {
         $this->_namespaces[strval($prefix)] = strval($uri);
@@ -46,6 +79,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ protected function _buildNamespaces()
 
+    /**
+     * Build the XML namespaces into a node.
+     *
+     * @param DOMNode $node the node to add the XML namespaces to.
+     */
     protected function _buildNamespaces(DOMNode $node)
     {
         foreach ($this->_namespaces as $prefix => $uri) {
@@ -56,6 +94,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ protected function _buildCommonAttributes()
 
+    /**
+     * Build the language and base common attributes into a node
+     *
+     * @param DOMNode $node the node to add the common attributes to.
+     */
     protected function _buildCommonAttributes(DOMNode $node)
     {
         if ($this->_base != '') {
@@ -70,6 +113,13 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ protected function _getNode()
 
+    /**
+     * Get a built copy of the current node.
+     *
+     * @param DOMNode $context_node the parent node to this node.
+     *
+     * @return DOMNode a build copy of the current node.
+     */
     protected function _getNode(DOMNode $context_node)
     {
         $node = $this->_createNode($context_node);
@@ -85,6 +135,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // }}}
     // {{{ protected function _buildExtensionNodes()
 
+    /**
+     * Build the extension nodes...
+     *
+     * @param DOMNode $node
+     */
     protected function _buildExtensionNodes(DOMNode $node)
     {
     }

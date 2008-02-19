@@ -15,6 +15,14 @@ class XML_Atom_Contributor extends XML_Atom_Person
 {
     // {{{ protected function _createNode()
 
+    /**
+     * Create a contributor node
+     *
+     * @param DOMNode $context_node the parent node that will contain this
+     *   contributor node.
+     *
+     * @return DOMNode the new contributor node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;

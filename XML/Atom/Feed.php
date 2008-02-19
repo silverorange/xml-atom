@@ -16,11 +16,21 @@ class XML_Atom_Feed extends XML_Atom_Source
 {
     // {{{ protected properties
 
+    /**
+     * The entries for this feed
+     *
+     * @var array()
+     */
     protected $_entries = array();
 
     // }}}
     // {{{ public function addEntry()
 
+    /**
+     * Add an entry to this feed
+     *
+     * @param XML_Atom_Entry $entry the entry to be added.
+     */
     public function addEntry(XML_Atom_Entry $entry)
     {
         $this->_entries[] = $entry;
@@ -29,6 +39,14 @@ class XML_Atom_Feed extends XML_Atom_Source
     // }}}
     // {{{ public function getDocument()
 
+    /**
+     * Get the XML document for this feed
+     *
+     * @param string $encoding the encoding of this document.
+     * @pamam string $prefix
+     *
+     * @return DOMDocument the XML docuemnt for this feed.
+     */
     public function getDocument($encoding = 'utf-8', $prefix = '')
     {
         $document = new DOMDocument('1.0', $encoding);
@@ -97,6 +115,13 @@ class XML_Atom_Feed extends XML_Atom_Source
     // }}}
     // {{{ protected function _createNode()
 
+    /**
+     * Get a built copy of the current node.
+     *
+     * @param DOMNode $context_node the parent node to this node.
+     *
+     * @return DOMNode a build copy of the current node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         return $context_node;

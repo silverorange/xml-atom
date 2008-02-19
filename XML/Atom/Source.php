@@ -50,6 +50,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setID()
 
+    /**
+     * Set the id of this source
+     *
+     * @param mixed $id the id to set this source to.
+     */
     public function setId($id)
     {
         $this->_id = strval($id);
@@ -58,6 +63,12 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setTitle()
 
+    /**
+     * Set the title of this source
+     *
+     * @param mixed $title the title to set or a XML_Atom_Title object.
+     * @param string $type the type used to describe this title.
+     */
     public function setTitle($title, $type = 'text')
     {
         if (!($title instanceof XML_Atom_Title)) {
@@ -70,6 +81,12 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setUpdated()
 
+    /**
+     * Set the updated of this source
+     *
+     * @param mixed $updated the date this was last updated or a
+     *   XML_Atom_Updated object.
+     */
     public function setUpdated($updated)
     {
         if (!($updated instanceof XML_Atom_Updated)) {
@@ -82,6 +99,13 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setSubtitle()
 
+    /**
+     * Set the subtitle of this source
+     *
+     * @param mixed $subtitle the subtitle of this source or a XML_Atom_Subtitle
+     *   object.
+     * @param string $type the type that describes this subtitle.
+     */
     public function setSubtitle($subtitle, $type = 'text')
     {
         if (!($subtitle === null || $subtitle instanceof XML_Atom_Subtitle)) {
@@ -94,6 +118,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setIcon()
 
+    /**
+     * Set the icon of this source
+     *
+     * @param mixed $icon the icon to set for this source.
+     */
     public function setIcon($icon)
     {
         $this->_icon = strval($icon);
@@ -102,6 +131,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setLogo()
 
+    /**
+     * Set the logo of this source
+     *
+     * @param mixed $logo the logo to set for this source.
+     */
     public function setLogo($logo)
     {
         $this->_logo = strval($logo);
@@ -110,6 +144,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setRights()
 
+    /**
+     * Set the rights of this source
+     *
+     * @param mixed $rights the rights to set for this source.
+     */
     public function setRights($rights)
     {
         $this->_rights = strval($rights);
@@ -118,6 +157,14 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function setGenerator()
 
+    /**
+     * Set the generator of this source
+     *
+     * @param mixed $generator the subtitle of this source or a 
+     *   XML_Atom_Generator object.
+     * @param string $uri the uri of this generator.
+     * @param string $version the version of this generator.
+     */
     public function setGenerator($generator, $uri = '', $version = '')
     {
         if (!($generator === null ||
@@ -131,6 +178,13 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function addAuthor()
 
+    /**
+     * Add an author to the source 
+     *
+     * @param mixed $name the name or the author of the XML_Atom_Author object
+     * @param string $uri the uri of the author
+     * @param string $email the email of the author
+     */
     public function addAuthor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Author) {
@@ -145,6 +199,14 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function addContributor()
 
+    /**
+     * Add a contributor to the source 
+     *
+     * @param mixed $name the name of the contributor or the
+     *   XML_Atom_Contributor object
+     * @param string $uri the uri of the contributor
+     * @param string $email the email of the contributor
+     */
     public function addContributor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Contributor) {
@@ -159,6 +221,15 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function addCategory()
 
+    /**
+     * Add a category to the source 
+     *
+     * @param mixed $term the term of the category or the XML_Atom_Category
+     *   object
+     * @param string $sheme the scheme of the category
+     * @param string $label the label of the category
+     * @param string $language the language of the category
+     */
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
     {
@@ -175,6 +246,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ public function addLink()
 
+    /**
+     * Add a link to the source 
+     *
+     * @param XML_Atom_Link $link the link to add to the source
+     */
     public function addLink(XML_Atom_Link $link)
     {
         $this->_links[] = $link;
