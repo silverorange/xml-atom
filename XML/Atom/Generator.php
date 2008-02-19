@@ -59,8 +59,8 @@ class XML_Atom_Generator extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement(
-            $this->_getAtomNodeName($context_node, 'generator'));
+        return $document->createElementNS(XML_Atom_Node::NAMESPACE,
+            'generator');
     }
 
     // }}}
@@ -71,12 +71,11 @@ class XML_Atom_Generator extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         if ($this->_uri != '') {
-            $node->setAttribute($this->_getAtomNodeName($node, 'uri'),
-                $this->_uri);
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'uri', $this->_uri);
         }
 
         if ($this->_version != '') {
-            $node->setAttribute($this->_getAtomNodeName($node, 'version'),
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'version',
                 $this->_version);
         }
 

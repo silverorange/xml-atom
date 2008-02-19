@@ -36,15 +36,6 @@ abstract class XML_Atom_Node
     }
 
     // }}}
-    // {{{ protected function _getAtomNodeName()
-
-    protected function _getAtomNodeName(DOMNode $context_node, $name)
-    {
-        $prefix = $context_node->lookupPrefix(self::NAMESPACE);
-        return ($prefix === null) ? $name : $prefix . ':' . $name;
-    }
-
-    // }}}
 }
 
 ?>

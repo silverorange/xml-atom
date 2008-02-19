@@ -29,15 +29,15 @@ class XML_Atom_Feed extends XML_Atom_Source
     // }}}
     // {{{ public function getDocument()
 
-    public function getDocument($encoding = 'utf-8')
+    public function getDocument($encoding = 'utf-8', $prefix = '')
     {
-        $implementation = new DOMImplementation();
-        $document = $implementation->createDocument(
-            XML_Atom_Node::NAMESPACE, 'feed');
+        $document = new DOMDocument('1.0', $encoding);
 
-        $document->encoding = $encoding;
+        $name = (strlen($prefix) > 0) ? $prefix . ':feed' : 'feed';
+        $feed = $document->createElementNS(XML_Atom_Node::NAMESPACE, $name);
+        $document->appendChild($feed);
 
-        $document_element = $this->_getNode($document->documentElement);
+        $this->_getNode($feed);
 
         return $document;
     }
@@ -89,8 +89,6 @@ class XML_Atom_Feed extends XML_Atom_Source
     {
         parent::_buildNode($node);
 
-        $document = $node->ownerDocument;
-
         foreach ($this->_entries as $entry) {
             $node->appendChild($entry->_getNode($node));
         }
@@ -101,8 +99,7 @@ class XML_Atom_Feed extends XML_Atom_Source
 
     protected function _createNode(DOMNode $context_node)
     {
-        $document = $context_node->ownerDocument;
-        return $document->documentElement;
+        return $context_node;
     }
 
     // }}}

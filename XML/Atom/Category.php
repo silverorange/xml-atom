@@ -61,8 +61,7 @@ class XML_Atom_Category extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement(
-            $this->_getAtomNodeName($context_node, 'category'));
+        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'category');
     }
 
     // }}}
@@ -72,17 +71,17 @@ class XML_Atom_Category extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $node->setAttribute($this->_getAtomNodeName($node, 'term'),
-            $this->_term);
+        $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
+            $this->_getAtomNodeName($node, 'term'), $this->_term);
 
         if ($this->_scheme != '') {
-            $node->setAttribute($this->_getAtomNodeName($node, 'scheme'),
-                $this->_scheme);
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
+                $this->_getAtomNodeName($node, 'scheme'), $this->_scheme);
         }
 
         if ($this->_label != '') {
-            $node->setAttribute($this->_getAtomNodeName($node, 'label'),
-                $this->_label);
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
+                $this->_getAtomNodeName($node, 'label'), $this->_label);
         }
     }
     // }}}

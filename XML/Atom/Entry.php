@@ -195,15 +195,15 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function getDocument()
 
-    public function getDocument($encoding = 'utf-8')
+    public function getDocument($encoding = 'utf-8', $prefix = '')
     {
-        $implementation = new DOMImplementation();
-        $document = $implementation->createDocument(
-            XML_Atom_Node::NAMESPACE, 'entry');
+        $document = new DOMDocument('1.0', $encoding);
 
-        $document->encoding = $encoding;
+        $name = (strlen($prefix) > 0) ? $prefix . ':entry' : 'entry';
+        $entry = $document->createElementNS(XML_Atom_Node::NAMESPACE, $name);
+        $document->appendChild($entry);
 
-        $document_element = $this->_getNode($document->documentElement);
+        $this->_getNode($entry);
 
         return $document;
     }
@@ -222,12 +222,15 @@ class XML_Atom_Entry extends XML_Atom_Element
 
     protected function _createNode(DOMNode $context_node)
     {
-        $document = $context_node->ownerDocument;
-        if ($document->documentElement->nodeName == 'feed') { // TODO: lookup with NS
-            $node = $document->createElement(
-                $this->_getAtomNodeName($context_node, 'entry'));
+        $namespace = $context_node->namespaceURI;
+        $local_name = $context_node->localName;
+
+        if ($namespace == XML_Atom_Node::NAMESPACE && $local_name == 'feed') {
+            $document = $context_node->ownerDocument;
+            $node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
+                'entry');
         } else {
-            $node = $document->documentElement;
+            $node = $context_node;
         }
 
         return $node;
@@ -257,9 +260,7 @@ class XML_Atom_Entry extends XML_Atom_Element
         }
 
         $id_text_node = $document->createTextNode($this->_id);
-        $id_node = $document->createElement(
-            $this->_getAtomNodeName($node, 'id'));
-
+        $id_node = $document->createElementNS(XML_Atom_Node::NAMESPACE, 'id');
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
 
@@ -273,8 +274,8 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         if ($this->_rights != '') {
             $rights_text_node = $document->createTextNode($this->_rights);
-            $rights_node = $document->createElement(
-                $this->_getAtomNodeName($node, 'rights'));
+            $rights_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
+                'rights');
 
             $rights_node->appendChild($rights_text_node);
             $node->appendChild($rights_node);

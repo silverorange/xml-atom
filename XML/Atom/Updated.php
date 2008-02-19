@@ -18,8 +18,7 @@ class XML_Atom_Updated extends XML_Atom_Date
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement(
-            $this->_getAtomNodeName($context_node, 'updated'));
+        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'updated');
     }
 
     // }}}

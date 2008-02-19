@@ -18,8 +18,7 @@ class XML_Atom_Author extends XML_Atom_Person
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElement(
-            $this->_getAtomNodeName($context_node, 'author'));
+        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'author');
     }
 
     // }}}

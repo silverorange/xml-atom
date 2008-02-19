@@ -46,7 +46,6 @@ abstract class XML_Atom_Date extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         $date_string = $this->_date->getDate(DATE_FORMAT_ISO_EXTENDED);
-        $date_string = htmlspecialchars($date_string);
         $text_node = $document->createTextNode($date_string);
 
         $node->appendChild($text_node);
