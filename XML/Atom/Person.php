@@ -7,7 +7,7 @@ require_once 'XML/Atom/Element.php';
 /**
  * An abstract class used to build XML repsenting a person node in an Atom Feed.
  *
- * @package   XML-Atom
+ * @package   XML_Atom
  * @copyright 2008 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
