@@ -16,7 +16,7 @@ class XML_Atom_Content extends XML_Atom_Text
     // {{{ protected function _createNode()
 
     /**
-     * Create a content node
+     * Creates a content node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   content node.

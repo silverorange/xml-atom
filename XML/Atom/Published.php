@@ -16,7 +16,7 @@ class XML_Atom_Published extends XML_Atom_Date
     // {{{ protected function _createNode()
 
     /**
-     * Create a published node
+     * Creates a published node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   published node.

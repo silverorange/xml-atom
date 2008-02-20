@@ -40,7 +40,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contruct this XML_Atom_Person
+     * Contructs this XML_Atom_Person
      *
      * @param string $name the name of the person to use.
      * @param string $uri the URI of the person to use.
@@ -57,7 +57,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setName()
 
     /**
-     * Set the name of this node.
+     * Sets the name of this node.
      *
      * @param string $name the name to set this node to.
      */
@@ -70,7 +70,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setUri()
 
     /**
-     * Set the URI of this node.
+     * Sets the URI of this node.
      *
      * @param string $uri the URI to set this node to.
      */
@@ -83,7 +83,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setEmail()
 
     /**
-     * Set the email for this node.
+     * Sets the email for this node.
      *
      * @param string $email the email to set this node to.
      */
@@ -96,9 +96,9 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Build all the XML information contained inside a person node.
+     * Builds all the XML information contained inside this node.
      *
-     * @param DOMNode $node the person node that will contain the XML genereated
+     * @param DOMNode $node the parent node that will contain the XML genereated
      *   by this node.
      */
     protected function _buildNode(DOMNode $node)

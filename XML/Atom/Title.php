@@ -16,7 +16,7 @@ class XML_Atom_Title extends XML_Atom_Text
     // {{{ protected function _createNode()
 
     /**
-     * Create a text node
+     * Creates a text node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   text node.

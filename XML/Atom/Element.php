@@ -40,7 +40,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ public function setBase()
 
     /**
-     * Set the base of this node.
+     * Sets the base of this node.
      *
      * @param string $base the base this node should use.
      */
@@ -53,7 +53,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ public function setLanguage()
 
     /**
-     * Set the language of this node.
+     * Sets the language of this node.
      *
      * @param string $language the language this node should use.
      */
@@ -66,7 +66,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ public function addNamespace()
 
     /**
-     * Add a namespace to this node.
+     * Adds a namespace to this node.
      *
      * @param string $prefix the prefix of this namespace.
      * @param string $uri the URI of this namespace.
@@ -80,7 +80,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ protected function _buildNamespaces()
 
     /**
-     * Build the XML namespaces into a node.
+     * Builds the XML namespaces into a node.
      *
      * @param DOMNode $node the node to add the XML namespaces to.
      */
@@ -95,7 +95,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ protected function _buildCommonAttributes()
 
     /**
-     * Build the language and base common attributes into a node
+     * Builds the language and base common attributes into a node
      *
      * @param DOMNode $node the node to add the common attributes to.
      */
@@ -114,7 +114,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ protected function _getNode()
 
     /**
-     * Get a built copy of the current node.
+     * Gets a built copy of the current node.
      *
      * @param DOMNode $context_node the parent node to this node.
      *
@@ -136,7 +136,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     // {{{ protected function _buildExtensionNodes()
 
     /**
-     * Build the extension nodes...
+     * Builds the extension nodes...
      *
      * @param DOMNode $node
      */

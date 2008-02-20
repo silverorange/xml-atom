@@ -33,7 +33,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contruct this XML_Atom_Text
+     * Contructs this XML_Atom_Text
      *
      * @param string $text the text to use.
      * @param string $type the type to use.
@@ -50,7 +50,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     // {{{ public function setText()
 
     /**
-     * Set the text of this node
+     * Sets the text of this node
      *
      * @param string $text the text this node should use.
      */
@@ -63,7 +63,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     // {{{ public function setType()
 
     /**
-     * Set the type of this node
+     * Sets the type of this node
      *
      * @param string $type the type this node should use.
      */
@@ -76,7 +76,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Build all the XML information contained inside a text node.
+     * Builds all the XML information contained inside a text node.
      *
      * @param DOMNode $node the text node that will contain all the XML created
      *   by this node.

@@ -27,7 +27,7 @@ class XML_Atom_Feed extends XML_Atom_Source
     // {{{ public function addEntry()
 
     /**
-     * Add an entry to this feed
+     * Adds an entry to this feed
      *
      * @param XML_Atom_Entry $entry the entry to be added.
      */
@@ -40,7 +40,7 @@ class XML_Atom_Feed extends XML_Atom_Source
     // {{{ public function getDocument()
 
     /**
-     * Get the XML document for this feed
+     * Gets the XML document for this feed
      *
      * @param string $encoding the encoding of this document.
      * @pamam string $prefix
@@ -116,7 +116,7 @@ class XML_Atom_Feed extends XML_Atom_Source
     // {{{ protected function _createNode()
 
     /**
-     * Get a built copy of the current node.
+     * Gets a built copy of the current node.
      *
      * @param DOMNode $context_node the parent node to this node.
      *

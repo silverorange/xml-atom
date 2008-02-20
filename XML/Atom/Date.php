@@ -27,7 +27,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contruct this XML_Atom_Person
+     * Contructs this XML_Atom_Person
      *
      * @param string $date the date to use.
      */
@@ -40,7 +40,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // {{{ public function setDate()
 
     /**
-     * Set the date of this node
+     * Sets the date of this node
      *
      * @param mixed $date the date this node should use.
      */
@@ -57,7 +57,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Build all the XML information contained inside a date node.
+     * Builds all the XML information contained inside a date node.
      *
      * @param DOMNode $node the date node that will contain all the XML created
      *   by this node.

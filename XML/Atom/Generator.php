@@ -57,7 +57,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ public function setGenerator()
 
     /**
-     * Set the generator of this node.
+     * Sets the generator of this node.
      *
      * @param string $generator the generator to set this node to.
      */
@@ -70,7 +70,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ public function setUri()
 
     /**
-     * Set the URI of this node.
+     * Sets the URI of this node.
      *
      * @param string $uri the URI to set this node to.
      */
@@ -83,7 +83,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ public function setVersion()
 
     /**
-     * Set the version of this node.
+     * Sets the version of this node.
      *
      * @param string $version the version to set this node to.
      */
@@ -96,7 +96,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ protected function _createNode()
 
     /**
-     * Create a generator node
+     * Creates a generator node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   generator node.
@@ -114,7 +114,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Build all the XML information contained inside a generator node.
+     * Builds all the XML information contained inside a generator node.
      *
      * @param DOMNode $node the node that will contain the XML genereated
      *   by this generator node.

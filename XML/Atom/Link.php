@@ -61,7 +61,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contruct this XML_Atom_Link
+     * Contructs this XML_Atom_Link
      *
      * @param string $href the href to use.
      * @param string $hreflang the href language to use.
@@ -76,7 +76,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setHref()
 
     /**
-     * Set the href of this node.
+     * Sets the href of this node.
      *
      * @param string $href the href to set this node to.
      */
@@ -89,7 +89,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setHrefLanguage()
 
     /**
-     * Set the href language of this node.
+     * Sets the href language of this node.
      *
      * @param string $hreflang the href language to set this node to.
      */
@@ -102,7 +102,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setRelation()
 
     /**
-     * Set the relation of this node.
+     * Sets the relation of this node.
      *
      * @param string $relation the relation to set this node to.
      */
@@ -115,7 +115,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setType()
 
     /**
-     * Set the type for this node.
+     * Sets the type for this node.
      *
      * @param string $type the type to set this node to.
      */
@@ -128,7 +128,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setTitle()
 
     /**
-     * Set the title of this node.
+     * Sets the title of this node.
      *
      * @param string $title the title to set this node to.
      */
@@ -141,7 +141,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ public function setLength()
 
     /**
-     * Set the length of this node.
+     * Sets the length of this node.
      *
      * @param string $length the length to set this node to.
      */
@@ -158,7 +158,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ protected function _createNode()
 
     /**
-     * Create a link node
+     * Creates a link node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   link node.
@@ -175,7 +175,7 @@ class XML_Atom_Link extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Build all the XML information contained inside a link node.
+     * Builds all the XML information contained inside a link node.
      *
      * @param DOMNode $node the link node that will contain the XML genereated
      *   by this node.

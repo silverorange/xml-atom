@@ -40,7 +40,7 @@ class XML_Atom_Category extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contruct this XML_Atom_Category
+     * Contructs this XML_Atom_Category
      *
      * @param string $term the term used to decribe this category.
      * @param string $scheme the scheme to use.
@@ -59,7 +59,7 @@ class XML_Atom_Category extends XML_Atom_Element
     // {{{ public function setTerm()
 
     /**
-     * Set the term of this node
+     * Sets the term of this node
      *
      * @param string $term the term used to describe the category.
      */
@@ -72,7 +72,7 @@ class XML_Atom_Category extends XML_Atom_Element
     // {{{ public function setScheme()
 
     /**
-     * Set the scheme of this node
+     * Sets the scheme of this node
      *
      * @param mixed $scheme the scheme this node should use.
      */
@@ -85,7 +85,7 @@ class XML_Atom_Category extends XML_Atom_Element
     // {{{ public function setLabel()
 
     /**
-     * Set the label of this node
+     * Sets the label of this node
      *
      * @param mixed $label the label this node should use.
      * @param mixed $language the language this node should use.
@@ -100,7 +100,7 @@ class XML_Atom_Category extends XML_Atom_Element
     // {{{ protected function _createNode()
 
     /**
-     * Create a category node
+     * Creates a category node
      *
      * @param DOMNode $context_node the parent node that will contain this
      *   category node.
@@ -116,6 +116,12 @@ class XML_Atom_Category extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Builds all the XML information contained inside this node.
+     *
+     * @param DOMNode $node the parent node that will contain the XML genereated
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
