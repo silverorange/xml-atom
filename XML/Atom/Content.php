@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Text.php';
 
 /**
- * Content
+ * A class used to generate a content node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

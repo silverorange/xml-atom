@@ -14,7 +14,7 @@ require_once 'XML/Atom/Updated.php';
 require_once 'Date.php';
 
 /**
- * Source
+ * A class used to generate the source for an Atom Feed.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange
@@ -24,22 +24,101 @@ class XML_Atom_Source extends XML_Atom_Element
 {
     // {{{ protected properties
 
+    /**
+     * The id for this source node
+     *
+     * @var string
+     */
     protected $_id = '';
+
+    /**
+     * The title for this source node
+     *
+     * @var Atom_XML_Title
+     */
     protected $_title = null;
+
+    /**
+     * The updated date of this source node
+     *
+     * @var XML_Atom_Updated
+     */
     protected $_updated = null;
+
+    /**
+     * The subtitle for this source node
+     *
+     * @var XML_Atom_Subtitle
+     */
     protected $_subtitle = null;
+
+    /**
+     * The icon for this source node
+     *
+     * @var string
+     */
     protected $_icon = '';
+
+    /**
+     * The logo for this source node
+     *
+     * @var string
+     */
     protected $_logo = '';
+
+    /**
+     * The rights for this source node
+     *
+     * @var string
+     */
     protected $_rights = '';
+
+    /**
+     * The generator for this source node
+     *
+     * @var XML_Atom_Generator
+     */
     protected $_generator = null;
+
+    /**
+     * The authors for this feed.
+     *
+     * @var array()
+     */
     protected $_authors = array();
+
+    /**
+     * The contributors for this feed.
+     *
+     * @var array()
+     */
     protected $_contributors = array();
+
+    /**
+     * The categories for this feed.
+     *
+     * @var array()
+     */
     protected $_categories = array();
+
+    /**
+     * The links for this feed.
+     *
+     * @var array()
+     */
     protected $_links = array();
 
     // }}}
     // {{{ public function __construct()
 
+    /**
+     * Contructs this XML_Atom_Source
+     *
+     * @param string $id the id of the person to use.
+     * @param mixed $title the title to use or a XML_Atom_Title object.
+     * @param mixed $updated the updated date to use or a XML_Atom_Updated
+     *   object.
+     */
     public function __construct($id, $title, $updated = null)
     {
         $this->setId($id);
@@ -51,7 +130,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setID()
 
     /**
-     * Set the id of this source
+     * Sets the id of this source node
      *
      * @param mixed $id the id to set this source to.
      */
@@ -64,7 +143,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setTitle()
 
     /**
-     * Set the title of this source
+     * Sets the title of this source node
      *
      * @param mixed $title the title to set or a XML_Atom_Title object.
      * @param string $type the type used to describe this title.
@@ -82,7 +161,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setUpdated()
 
     /**
-     * Set the updated of this source
+     * Sets the updated of this source node
      *
      * @param mixed $updated the date this was last updated or a
      *   XML_Atom_Updated object.
@@ -100,7 +179,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setSubtitle()
 
     /**
-     * Set the subtitle of this source
+     * Sets the subtitle of this source node
      *
      * @param mixed $subtitle the subtitle of this source or a XML_Atom_Subtitle
      *   object.
@@ -119,7 +198,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setIcon()
 
     /**
-     * Set the icon of this source
+     * Sets the icon of this source node
      *
      * @param mixed $icon the icon to set for this source.
      */
@@ -132,7 +211,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setLogo()
 
     /**
-     * Set the logo of this source
+     * Sets the logo of this source node
      *
      * @param mixed $logo the logo to set for this source.
      */
@@ -145,7 +224,7 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setRights()
 
     /**
-     * Set the rights of this source
+     * Sets the rights of this source node
      *
      * @param mixed $rights the rights to set for this source.
      */
@@ -158,9 +237,9 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function setGenerator()
 
     /**
-     * Set the generator of this source
+     * Sets the generator of this source node
      *
-     * @param mixed $generator the subtitle of this source or a 
+     * @param mixed $generator the subtitle of this source or a
      *   XML_Atom_Generator object.
      * @param string $uri the uri of this generator.
      * @param string $version the version of this generator.
@@ -179,11 +258,11 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function addAuthor()
 
     /**
-     * Add an author to the source 
+     * Adds an author to the source node
      *
-     * @param mixed $name the name or the author of the XML_Atom_Author object
-     * @param string $uri the uri of the author
-     * @param string $email the email of the author
+     * @param mixed $name the name or the author of the XML_Atom_Author object.
+     * @param string $uri the uri of the author.
+     * @param string $email the email of the author.
      */
     public function addAuthor($name, $uri = '', $email = '')
     {
@@ -200,12 +279,12 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function addContributor()
 
     /**
-     * Add a contributor to the source 
+     * Adds a contributor to this source node
      *
      * @param mixed $name the name of the contributor or the
-     *   XML_Atom_Contributor object
-     * @param string $uri the uri of the contributor
-     * @param string $email the email of the contributor
+     *   XML_Atom_Contributor object.
+     * @param string $uri the uri of the contributor.
+     * @param string $email the email of the contributor.
      */
     public function addContributor($name, $uri = '', $email = '')
     {
@@ -222,13 +301,13 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function addCategory()
 
     /**
-     * Add a category to the source 
+     * Adds a category to this source node
      *
      * @param mixed $term the term of the category or the XML_Atom_Category
-     *   object
-     * @param string $sheme the scheme of the category
-     * @param string $label the label of the category
-     * @param string $language the language of the category
+     *   object.
+     * @param string $sheme the scheme of the category.
+     * @param string $label the label of the category.
+     * @param string $language the language of the category.
      */
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
@@ -247,9 +326,9 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function addLink()
 
     /**
-     * Add a link to the source 
+     * Adds a link to this source node
      *
-     * @param XML_Atom_Link $link the link to add to the source
+     * @param XML_Atom_Link $link the link to add.
      */
     public function addLink(XML_Atom_Link $link)
     {
@@ -259,6 +338,14 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ protected function _createNode()
 
+    /**
+     * Creates a source node
+     *
+     * @param DOMNode $context_node the parent node that will contain this
+     *   source node.
+     *
+     * @return DOMNode the new source node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
@@ -268,6 +355,12 @@ class XML_Atom_Source extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Builds all the XML information contained inside this node.
+     *
+     * @param DOMNode $node the parent node that will contain the XML genereated
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;

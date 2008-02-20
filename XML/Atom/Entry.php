@@ -16,7 +16,7 @@ require_once 'XML/Atom/Title.php';
 require_once 'XML/Atom/Updated.php';
 
 /**
- * Entry
+ * A class used to generate an entry node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange
@@ -26,22 +26,101 @@ class XML_Atom_Entry extends XML_Atom_Element
 {
     // {{{ protected properties
 
+    /**
+     * The id for this entry node
+     *
+     * @var string
+     */
     protected $_id = '';
+
+    /**
+     * The title for this entry node
+     *
+     * @var Atom_XML_Title
+     */
     protected $_title = null;
+
+    /**
+     * The updated date of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
     protected $_updated = null;
+
+    /**
+     * The published date of this entry node
+     *
+     * @var XML_Atom_Published
+     */
     protected $_published = null;
+
+    /**
+     * The content of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
     protected $_content = null;
+
+    /**
+     * The summary of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
     protected $_summary = null;
+
+    /**
+     * The rights for this entry node
+     *
+     * @var string
+     */
     protected $_rights = '';
+
+    /**
+     * The source of this entry node
+     *
+     * @var XML_Atom_Source
+     */
     protected $_source = null;
+
+    /**
+     * The authors for this entry node
+     *
+     * @var array()
+     */
     protected $_authors = array();
+
+    /**
+     * The contributors for this entry node
+     *
+     * @var array()
+     */
     protected $_contributors = array();
+
+    /**
+     * The categories for this entry node
+     *
+     * @var array()
+     */
     protected $_categories = array();
+
+    /**
+     * The links for this entry node
+     *
+     * @var array()
+     */
     protected $_links = array();
 
     // }}}
     // {{{ public function __construct()
 
+    /**
+     * Contructs this XML_Atom_Entry
+     *
+     * @param string $id the id of the person to use.
+     * @param mixed $title the title to use or a XML_Atom_Title object.
+     * @param mixed $updated the updated date to use or a XML_Atom_Updated
+     *   object.
+     */
     public function __construct($id, $title, $updated = null)
     {
         $this->setId($id);
@@ -52,6 +131,11 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setId()
 
+    /**
+     * Sets the id of this node.
+     *
+     * @param string $id the id to set this node to.
+     */
     public function setId($id)
     {
         $this->_id = strval($id);
@@ -60,6 +144,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setTitle()
 
+    /**
+     * Set the title of this entry
+     *
+     * @param mixed $title the title to use or a XML_Atom_Updated object.
+     * @param string $type the type to use.
+     */
     public function setTitle($title, $type = 'text')
     {
         if (!($title instanceof XML_Atom_Title)) {
@@ -72,6 +162,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setUpdated()
 
+    /**
+     * Set the updated date of this entry
+     *
+     * @param mixed $updated the updated date to use or a XML_Atom_Updated
+     *   object.
+     */
     public function setUpdated($updated)
     {
         if (!($updated instanceof XML_Atom_Updated)) {
@@ -84,6 +180,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setPublished()
 
+    /**
+     * Set the published date of this entry
+     *
+     * @param mixed $published the published date to use or a XML_Atom_Published
+     *   object.
+     */
     public function setPublished($published)
     {
         if (!($published === null ||
@@ -97,6 +199,13 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setContent()
 
+    /**
+     * Set the content of this entry
+     *
+     * @param mixed $title the content to use or a XML_Atom_Content object.
+     * @param string $type the type to use.
+     * @param string $language the type to use.
+     */
     public function setContent($content, $type = 'text', $language = '')
     {
         if (!($content === null || $content instanceof XML_Atom_Content)) {
@@ -109,6 +218,13 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setSummary()
 
+    /**
+     * Set the summary of this entry
+     *
+     * @param mixed $summary the summary to use or a XML_Atom_Summary object.
+     * @param string $type the type to use.
+     * @param string $language the type to use.
+     */
     public function setSummary($summary, $type = 'text', $language = '')
     {
         if (!($summary === null || $summary instanceof XML_Atom_Summary)) {
@@ -121,6 +237,11 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setRights()
 
+    /**
+     * Sets the rights of this node.
+     *
+     * @param string $rights the rights to set this node to.
+     */
     public function setRights($rights)
     {
         $this->_rights = strval($rights);
@@ -129,6 +250,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function setSource()
 
+    /**
+     * Set the source of this entry
+     *
+     * @param mixed $source the source to use in the form of a XML_Atom_Feed
+     *   object or a XML_Atom_Source object.
+     */
     public function setSource($source)
     {
         if ($source instanceof XML_Atom_Feed) {
@@ -143,6 +270,13 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function addAuthor()
 
+    /**
+     * Adds an author to this entry
+     *
+     * @param mixed $name the name to be added or a XML_Atom_Author object.
+     * @param string $uri the URI to be added.
+     * @param string $email the email to be added.
+     */
     public function addAuthor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Author) {
@@ -157,6 +291,13 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function addContributor()
 
+    /**
+     * Adds a contributor to this entry
+     *
+     * @param mixed $name the name to be added or a XML_Atom_Contributor object.
+     * @param string $uri the URI to be added.
+     * @param string $email the email to be added.
+     */
     public function addContributor($name, $uri = '', $email = '')
     {
         if ($name instanceof XML_Atom_Contributor) {
@@ -171,6 +312,15 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function addCategory()
 
+    /**
+     * Adds category to this entry
+     *
+     * @param mixed $term the term used to decribe this category or a
+     *   XML_Atom_Category object.
+     * @param string $scheme the scheme to be added.
+     * @param string $label the label to be added.
+     * @param string $language the language to be added.
+     */
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
     {
@@ -187,6 +337,11 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function addLink()
 
+    /**
+     * Adds a link to this entry
+     *
+     * @param XML_Atom_Link $link the link to be added.
+     */
     public function addLink(XML_Atom_Link $link)
     {
         $this->_links[] = $link;
@@ -195,6 +350,14 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ public function getDocument()
 
+    /**
+     * Gets the XML document for this feed
+     *
+     * @param string $encoding the encoding of this document.
+     * @pamam string $prefix
+     *
+     * @return DOMDocument the XML docuemnt for this feed.
+     */
     public function getDocument($encoding = 'utf-8', $prefix = '')
     {
         $document = new DOMDocument('1.0', $encoding);
@@ -220,6 +383,14 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ protected function _createNode()
 
+    /**
+     * Creates an entry node
+     *
+     * @param DOMNode $context_node the parent node that will contain this
+     *   entry node.
+     *
+     * @return DOMNode the new entry node.
+     */
     protected function _createNode(DOMNode $context_node)
     {
         $namespace = $context_node->namespaceURI;
@@ -239,6 +410,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Builds all the XML information contained inside this node.
+     *
+     * @param DOMNode $node the parent node that will contain the XML genereated
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;

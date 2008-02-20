@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Date.php';
 
 /**
- * Published
+ * A class used to used to generate a published date node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

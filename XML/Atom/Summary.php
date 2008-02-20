@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Text.php';
 
 /**
- * Summary
+ * A class used to represent a summary node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

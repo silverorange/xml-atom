@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Person.php';
 
 /**
- * Contributor
+ * A class used to generate a contributor node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

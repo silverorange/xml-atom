@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Node.php';
 
 /**
- * Element
+ * A abstract class used to model the features of an element.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange
@@ -118,7 +118,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      *
      * @param DOMNode $context_node the parent node to this node.
      *
-     * @return DOMNode a build copy of the current node.
+     * @return DOMNode a built copy of the current node.
      */
     protected function _getNode(DOMNode $context_node)
     {

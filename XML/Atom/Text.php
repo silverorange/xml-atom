@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Element.php';
 
 /**
- * Text
+ * An abstract class used to model any node that represents any type of text.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

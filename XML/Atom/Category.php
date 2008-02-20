@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Element.php';
 
 /**
- * Category
+ * A class used to generate a category node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

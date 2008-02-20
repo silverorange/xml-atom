@@ -6,7 +6,7 @@ require_once 'XML/Atom/Entry.php';
 require_once 'XML/Atom/Source.php';
 
 /**
- * Feed
+ * A class used to generate all the entires in a feed.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange
@@ -17,7 +17,7 @@ class XML_Atom_Feed extends XML_Atom_Source
     // {{{ protected properties
 
     /**
-     * The entries for this feed
+     * The entries for this feed.
      *
      * @var array()
      */
@@ -103,6 +103,13 @@ class XML_Atom_Feed extends XML_Atom_Source
     // }}}
     // {{{ protected function _buildNode()
 
+    /**
+     * Builds all the XML information contained inside this node. Added each
+     *  entry contained in this node to the parent node.
+     *
+     * @param DOMNode $node the parent node that will contain the XML genereated
+     *   by this node.
+     */
     protected function _buildNode(DOMNode $node)
     {
         parent::_buildNode($node);

@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Element.php';
 
 /**
- * An abstract class used to build XML repsenting a person node in an Atom Feed.
+ * An abstract class used to model a node that represents a person.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

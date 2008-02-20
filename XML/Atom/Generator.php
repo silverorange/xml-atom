@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Element.php';
 
 /**
- * Generator
+ * A class used to generate a generator node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange

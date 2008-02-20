@@ -5,7 +5,7 @@
 require_once 'XML/Atom/Element.php';
 
 /**
- * Link
+ * A class used to generate a link node.
  *
  * @package   XML_Atom
  * @copyright 2008 silverorange
