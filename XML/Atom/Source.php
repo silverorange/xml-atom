@@ -326,12 +326,21 @@ class XML_Atom_Source extends XML_Atom_Element
     // {{{ public function addLink()
 
     /**
-     * Adds a link to this source node
+     * Adds a link to this entry
      *
-     * @param XML_Atom_Link $link the link to add.
+     * @param XML_Atom_Link|string $href the href of the link or a link object.
+     * @param string $rel optional. The link relationship.
+     * @param string $type optional. The type of the link.
+     * @param string $hreflang optional. The language of the link.
      */
-    public function addLink(XML_Atom_Link $link)
+    public function addLink($href, $rel = '', $type = '', $hreflang = '')
     {
+        if ($href instanceof XML_Atom_Link) {
+            $link = $href;
+        } else {
+            $link = new XML_Atom_Link($href, $rel, $type, $hreflang);
+        }
+
         $this->_links[] = $link;
     }
 
