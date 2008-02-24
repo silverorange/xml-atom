@@ -66,9 +66,11 @@ class XML_Atom_Link extends XML_Atom_Element
      * @param string $href the href to use.
      * @param string $hreflang the href language to use.
      */
-    public function __construct($href, $hreflang = '')
+    public function __construct($href, $rel = '', $type = '', $hreflang = '')
     {
         $this->setHref($href);
+        $this->setRelation($rel);
+        $this->setType($type);
         $this->setHrefLanguage($hreflang);
     }
 
