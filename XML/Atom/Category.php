@@ -48,7 +48,7 @@ class XML_Atom_Category extends XML_Atom_Element
      * @param string $language the language to use.
      */
     public function __construct($term, $scheme = '', $label = '',
-        $laguage = '')
+        $language = '')
     {
         $this->setTerm($term);
         $this->setScheme($scheme);
@@ -126,17 +126,16 @@ class XML_Atom_Category extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
-            $this->_getAtomNodeName($node, 'term'), $this->_term);
+        $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'term', $this->_term);
 
         if ($this->_scheme != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
-                $this->_getAtomNodeName($node, 'scheme'), $this->_scheme);
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'scheme',
+                $this->_scheme);
         }
 
         if ($this->_label != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE,
-                $this->_getAtomNodeName($node, 'label'), $this->_label);
+            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'label',
+                $this->_label);
         }
     }
     // }}}
