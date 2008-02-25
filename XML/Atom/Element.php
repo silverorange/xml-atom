@@ -102,11 +102,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
     protected function _buildCommonAttributes(DOMNode $node)
     {
         if ($this->_base != '') {
-            $node->setAttribute('xml:base', $this->base);
+            $node->setAttribute('xml:base', $this->_base);
         }
 
         if ($this->_language != '') {
-            $node->setAttribute('xml:lang', $this->language);
+            $node->setAttribute('xml:lang', $this->_language);
         }
     }
 
