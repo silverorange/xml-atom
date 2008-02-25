@@ -370,6 +370,7 @@ class XML_Atom_Entry extends XML_Atom_Element
     public function getDocument($encoding = 'utf-8', $prefix = '')
     {
         $document = new DOMDocument('1.0', $encoding);
+        $document->formatOutput = true;
 
         $name = (strlen($prefix) > 0) ? $prefix . ':entry' : 'entry';
         $entry = $document->createElementNS(XML_Atom_Node::NAMESPACE, $name);
