@@ -2,21 +2,33 @@
 
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+/**
+ * Element class definition.
+ */
 require_once 'XML/Atom/Element.php';
 
+// {{{ class XML_Atom_Person
+
 /**
- * An abstract class used to model a node that represents a person.
+ * Abstract base class used to describe a person, corporation or similar entity
+ * in some context in an Atom document
  *
+ * A person must have a name and may optionally have an associated URI and
+ * e-mail address.
+ *
+ * @category  XML
  * @package   XML_Atom
+ * @author    Michael Gauthier <mike@silverorange.com>
  * @copyright 2008 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      http://pear.php.net/package/XML_Atom
  */
 abstract class XML_Atom_Person extends XML_Atom_Element
 {
     // {{{ protected properties
 
     /**
-     * The name of this person
+     * The full name of this person
      *
      * @var string
      */
@@ -25,12 +37,14 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     /**
      * The URI of this person
      *
+     * This could be the URI for a weblog or a homepage.
+     *
      * @var string
      */
     protected $_uri = '';
 
     /**
-     * The email of this person
+     * The e-mail address of this person
      *
      * @var string
      */
@@ -40,11 +54,11 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function __construct()
 
     /**
-     * Contructs this XML_Atom_Person
+     * Creates a new person
      *
-     * @param string $name the name of the person to use.
-     * @param string $uri the URI of the person to use.
-     * @param string $email the email of the person to use.
+     * @param string $name  the full name of this person.
+     * @param string $uri   optional. The URI of this person.
+     * @param string $email optional. The e-mail address of this person.
      */
     public function __construct($name, $uri = '', $email = '')
     {
@@ -57,9 +71,11 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setName()
 
     /**
-     * Sets the name of this node.
+     * Sets the full name of this person
      *
-     * @param string $name the name to set this node to.
+     * @param string $name the full name of this person.
+     *
+     * @return void
      */
     public function setName($name)
     {
@@ -70,9 +86,11 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setUri()
 
     /**
-     * Sets the URI of this node.
+     * Sets the URI of this person
      *
-     * @param string $uri the URI to set this node to.
+     * @param string $uri the URI of this person.
+     *
+     * @return void
      */
     public function setUri($uri)
     {
@@ -83,9 +101,11 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ public function setEmail()
 
     /**
-     * Sets the email for this node.
+     * Sets the e-mail address of this person
      *
-     * @param string $email the email to set this node to.
+     * @param string $email the e-mail address of this person.
+     *
+     * @return void
      */
     public function setEmail($email)
     {
@@ -96,10 +116,15 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Builds all the XML information contained inside this node.
+     * Builds and creates the Atom XML nodes required by this person
      *
-     * @param DOMNode $node the parent node that will contain the XML genereated
-     *   by this node.
+     * The element node represeting this person is created separately and
+     * passed as the first parameter here.
+     *
+     * @param DOMNode $node the node representing this person. Extra nodes
+     *                      should be created and added to this node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {
@@ -136,5 +161,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
 
     // }}}
 }
+
+// }}}
 
 ?>
