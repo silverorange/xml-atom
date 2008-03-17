@@ -12,9 +12,9 @@ require_once 'XML/Atom/Person.php';
 /**
  * A {@link XML_Atom_Person} that indicates the author of an entry or feed
  *
- * Authors may represent, people, corporations or other similar entities.
+ * Authors may represent people, corporations or other similar entities.
  *
- * Feeds or entries may more than one author. If an entry does not have an
+ * Feeds or entries may have more than one author. If an entry does not have an
  * author then the authors of the parent feed or source apply to the entry.
  *
  * @category  XML
