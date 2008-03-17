@@ -118,7 +118,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     /**
      * Builds and creates the Atom XML nodes required by this person
      *
-     * The element node representing this author is created separately and
+     * The element node representing this person is created separately and
      * passed as the first parameter of this method.
      *
      * @param DOMNode $node the node representing this person. Extra nodes
