@@ -10,7 +10,7 @@ require_once 'XML/Atom/Person.php';
 // {{{ class XML_Atom_Contributor
 
 /**
- * A {@link XML_Atom_Person} that indicates a contributor to an entry or feed
+ * An {@link XML_Atom_Person} that indicates a contributor to an entry or feed
  *
  * Contributors may represent people, corporations or other similar entities.
  *
@@ -31,9 +31,8 @@ class XML_Atom_Contributor extends XML_Atom_Person
 {
     // {{{ protected function _createNode()
 
-
     /**
-     * Creates a contributor DOMElement node
+     * Creates a contributor DOMElement node for this contributor
      *
      * @param DOMNode $context_node the context node in the XML document used
      *                              to create this node.
