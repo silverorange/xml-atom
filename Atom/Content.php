@@ -16,17 +16,43 @@ class XML_Atom_Content extends XML_Atom_Text
     // {{{ protected function _createNode()
 
     /**
-     * Creates a content node
+     * Creates a content DOMElement node for this content
      *
-     * @param DOMNode $context_node the parent node that will contain this
-     *   content node.
+     * @param DOMNode $context_node the context node in the XML document used
+     *                              to create this node.
      *
-     * @return DOMNode the new content node.
+     * @return DOMNode the content DOMElement node.
      */
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'content');
+    }
+
+    // }}}
+    // {{{ protected function _buildNode()
+
+    /**
+     * Builds and creates the Atom XML nodes required by this content
+     *
+     * The element node representing this content is created separately and
+     * passed as the first parameter of this method.
+     *
+     * The text content of this content is created as a CDATA section.
+     *
+     * @param DOMNode $node the node representing this content. Extra nodes
+     *                      should be created and added to this node.
+     *
+     * @return void
+     */
+    protected function _buildNode(DOMNode $node)
+    {
+        $document = $node->ownerDocument;
+
+        $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'type', $this->_type);
+
+        $cdata_node = $document->createCDATASection($this->_text);
+        $node->appendChild($cdata_node);
     }
 
     // }}}

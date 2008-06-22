@@ -76,10 +76,17 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Builds all the XML information contained inside a text node.
+     * Builds and creates the Atom XML nodes required by this text
      *
-     * @param DOMNode $node the text node that will contain all the XML created
-     *   by this node.
+     * The element node representing this text is created separately and passed
+     * as the first parameter of this method.
+     *
+     * The text content of this text is created as a text node.
+     *
+     * @param DOMNode $node the node representing this text. Extra nodes should
+     *                      be created and added to this node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {
@@ -87,8 +94,8 @@ abstract class XML_Atom_Text extends XML_Atom_Element
 
         $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'type', $this->_type);
 
-        $cdata_node = $document->createCDATASection($this->_text);
-        $node->appendChild($cdata_node);
+        $text_node = $document->createTextNode($this->_text);
+        $node->appendChild($text_node);
     }
 
     // }}}
