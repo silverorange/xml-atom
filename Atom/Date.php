@@ -3,9 +3,9 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * PEAR Date class definitions.
+ * Date class definition.
  */
-require_once 'Date.php';
+require_once 'HotDate/HotDateTime.php';
 
 /**
  * Element class definition.
@@ -33,7 +33,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * The date represented by this element
      *
-     * @var Date
+     * @var HotDateTime
      *
      * @see XML_Atom_Date::setDate()
      */
@@ -45,10 +45,11 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * Creates a new Date
      *
-     * @param string|Date $date the date to use. This can be either an already
-     *                          constructed Date object or a textual
-     *                          representation of a Date that can be parsed by
-     *                          the Date class.
+     * @param string|HotDateTime $date the date to use. This can be either an
+     *                                 already constructed HotDateTime object
+     *                                 or a textual representation of a date
+     *                                 that can be parsed by the HotDateTime
+     *                                 class.
      */
     public function __construct($date)
     {
@@ -61,17 +62,18 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * Sets the date of this date element
      *
-     * @param string|Date $date the date to use. This can be either an already
-     *                          constructed Date object or a textual
-     *                          representation of a Date that can be parsed by
-     *                          the Date class.
+     * @param string|HotDateTime $date the date to use. This can be either an
+     *                                 already constructed HotDateTime object
+     *                                 or a textual representation of a date
+     *                                 that can be parsed by the HotDateTime
+     *                                 class.
      *
      * @return void
      */
     public function setDate($date)
     {
-        if (!($date instanceof Date)) {
-            $date = new Date($date);
+        if (!($date instanceof HotDateTime)) {
+            $date = new HotDateTime($date);
         }
 
         $this->_date = $date;
@@ -80,12 +82,6 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     // }}}
     // {{{ protected function _buildNode()
 
-    /**
-     * Builds all the XML information contained inside a date node.
-     *
-     * @param DOMNode $node the date node that will contain all the XML created
-     *   by this node.
-     */
     /**
      * Builds and creates the Atom XML nodes required by this date
      *
@@ -100,7 +96,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $date_string = $this->_date->getDate(DATE_FORMAT_ISO_EXTENDED);
+        $date_string = $this->_date->getISO8601();
         $text_node = $document->createTextNode($date_string);
 
         $node->appendChild($text_node);

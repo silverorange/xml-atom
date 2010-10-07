@@ -11,7 +11,6 @@ require_once 'XML/Atom/Link.php';
 require_once 'XML/Atom/Subtitle.php';
 require_once 'XML/Atom/Title.php';
 require_once 'XML/Atom/Updated.php';
-require_once 'Date.php';
 
 /**
  * A class used to generate the source for an Atom Feed.
@@ -114,10 +113,10 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Contructs this XML_Atom_Source
      *
-     * @param string $id the id of the person to use.
-     * @param mixed $title the title to use or a XML_Atom_Title object.
-     * @param mixed $updated the updated date to use or a XML_Atom_Updated
-     *   object.
+     * @param string $id      the id of the person to use.
+     * @param mixed  $title   the title to use or a XML_Atom_Title object.
+     * @param mixed  $updated the updated date to use or a XML_Atom_Updated
+     *                        object.
      */
     public function __construct($id, $title, $updated = null)
     {
@@ -164,7 +163,7 @@ class XML_Atom_Source extends XML_Atom_Element
      * Sets the updated of this source node
      *
      * @param mixed $updated the date this was last updated or a
-     *   XML_Atom_Updated object.
+     *                       XML_Atom_Updated object.
      */
     public function setUpdated($updated)
     {
