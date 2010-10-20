@@ -96,7 +96,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $date_string = $this->_date->getISO8601();
+        $date_string = $this->_date->format('c');
         $text_node = $document->createTextNode($date_string);
 
         $node->appendChild($text_node);
