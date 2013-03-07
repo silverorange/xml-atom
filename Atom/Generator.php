@@ -8,7 +8,7 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a generator node.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Generator extends XML_Atom_Element
@@ -106,8 +106,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElementNS(XML_Atom_Node::NAMESPACE,
-            'generator');
+        return $document->createElementNS(XML_Atom_Node::NS, 'generator');
     }
 
     // }}}
@@ -124,12 +123,15 @@ class XML_Atom_Generator extends XML_Atom_Element
         $document = $node->ownerDocument;
 
         if ($this->_uri != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'uri', $this->_uri);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'uri', $this->_uri);
         }
 
         if ($this->_version != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'version',
-                $this->_version);
+            $node->setAttributeNS(
+                XML_Atom_Node::NS,
+                'version',
+                $this->_version
+            );
         }
 
         $generator_content = $document->createTextNode($this->_generator);

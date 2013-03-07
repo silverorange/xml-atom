@@ -16,7 +16,7 @@ require_once 'XML/Atom/Updated.php';
  * A class used to generate the source for an Atom Feed.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Source extends XML_Atom_Element
@@ -357,7 +357,7 @@ class XML_Atom_Source extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'source');
+        return $document->createElementNS(XML_Atom_Node::NS, 'source');
     }
 
     // }}}
@@ -391,15 +391,13 @@ class XML_Atom_Source extends XML_Atom_Element
 
         if ($this->_icon != '') {
             $icon_text_node = $document->createTextNode($this->_icon);
-            $icon_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'icon');
-
+            $icon_node = $document->createElementNS(XML_Atom_Node::NS, 'icon');
             $icon_node->appendChild($icon_text_node);
             $node->appendChild($icon_node);
         }
 
         $id_text_node = $document->createTextNode($this->_id);
-        $id_node = $document->createElementNS(XML_Atom_Node::NAMESPACE, 'id');
+        $id_node = $document->createElementNS(XML_Atom_Node::NS, 'id');
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
 
@@ -409,18 +407,17 @@ class XML_Atom_Source extends XML_Atom_Element
 
         if ($this->_logo != '') {
             $logo_text_node = $document->createTextNode($this->_logo);
-            $logo_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'logo');
-
+            $logo_node = $document->createElementNS(XML_Atom_Node::NS, 'logo');
             $logo_node->appendChild($logo_text_node);
             $node->appendChild($logo_node);
         }
 
         if ($this->_rights != '') {
             $rights_text_node = $document->createTextNode($this->_rights);
-            $rights_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'rights');
-
+            $rights_node = $document->createElementNS(
+                XML_Atom_Node::NS,
+                'rights'
+            );
             $rights_node->appendChild($rights_text_node);
             $node->appendChild($rights_node);
         }

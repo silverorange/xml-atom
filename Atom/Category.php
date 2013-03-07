@@ -8,7 +8,7 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a category node.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Category extends XML_Atom_Element
@@ -110,7 +110,7 @@ class XML_Atom_Category extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'category');
+        return $document->createElementNS(XML_Atom_Node::NS, 'category');
     }
 
     // }}}
@@ -126,16 +126,18 @@ class XML_Atom_Category extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'term', $this->_term);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'term', $this->_term);
 
         if ($this->_scheme != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'scheme',
-                $this->_scheme);
+            $node->setAttributeNS(
+                XML_Atom_Node::NS,
+                'scheme',
+                $this->_scheme
+            );
         }
 
         if ($this->_label != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'label',
-                $this->_label);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'label', $this->_label);
         }
     }
     // }}}

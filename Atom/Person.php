@@ -19,7 +19,7 @@ require_once 'XML/Atom/Element.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/XML_Atom
  */
@@ -130,7 +130,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $name_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
+        $name_node = $document->createElementNS(XML_Atom_Node::NS,
             'name');
 
         $name_content = $document->createTextNode($this->_name);
@@ -139,9 +139,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
         $node->appendChild($name_node);
 
         if ($this->_uri != '') {
-            $uri_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'uri');
-
+            $uri_node = $document->createElementNS(XML_Atom_Node::NS, 'uri');
             $uri_content = $document->createTextNode($this->_uri);
             $uri_node->appendChild($uri_content);
 
@@ -149,9 +147,10 @@ abstract class XML_Atom_Person extends XML_Atom_Element
         }
 
         if ($this->_email != '') {
-            $email_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'email');
-
+            $email_node = $document->createElementNS(
+                XML_Atom_Node::NS,
+                'email'
+            );
             $email_content = $document->createTextNode($this->_email);
             $email_node->appendChild($email_content);
 

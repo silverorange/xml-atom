@@ -8,7 +8,7 @@ require_once 'XML/Atom/Element.php';
  * An abstract class used to model any node that represents any type of text.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 abstract class XML_Atom_Text extends XML_Atom_Element
@@ -92,7 +92,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'type', $this->_type);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->_type);
 
         $text_node = $document->createTextNode($this->_text);
         $node->appendChild($text_node);

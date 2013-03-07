@@ -21,7 +21,7 @@ require_once 'XML/Atom/Person.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/XML_Atom
  * @see       XML_Atom_Entry::addContributor()
@@ -42,8 +42,7 @@ class XML_Atom_Contributor extends XML_Atom_Person
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElementNS(XML_Atom_Node::NAMESPACE,
-            'contributor');
+        return $document->createElementNS(XML_Atom_Node::NS, 'contributor');
     }
 
     // }}}

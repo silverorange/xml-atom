@@ -8,7 +8,7 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a link node.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Link extends XML_Atom_Element
@@ -170,7 +170,7 @@ class XML_Atom_Link extends XML_Atom_Element
     protected function _createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
-        return $document->createElementNS(XML_Atom_Node::NAMESPACE, 'link');
+        return $document->createElementNS(XML_Atom_Node::NS, 'link');
     }
 
     // }}}
@@ -184,30 +184,30 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     protected function _buildNode(DOMNode $node)
     {
-        $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'href', $this->_href);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'href', $this->_href);
 
         if ($this->_rel != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'rel', $this->_rel);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'rel', $this->_rel);
         }
 
         if ($this->_type != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'type',
-                $this->_type);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->_type);
         }
 
         if ($this->_hreflang != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'hreflang',
-                $this->_hreflang);
+            $node->setAttributeNS(
+                XML_Atom_Node::NS,
+                'hreflang',
+                $this->_hreflang
+            );
         }
 
         if ($this->_title != '') {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'title',
-                $this->_title);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'title', $this->_title);
         }
 
         if ($this->_length !== null) {
-            $node->setAttributeNS(XML_Atom_Node::NAMESPACE, 'length',
-                $this->_length);
+            $node->setAttributeNS(XML_Atom_Node::NS, 'length', $this->_length);
         }
     }
 

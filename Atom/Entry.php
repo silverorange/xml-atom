@@ -19,7 +19,7 @@ require_once 'XML/Atom/Updated.php';
  * A class used to generate an entry node.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Entry extends XML_Atom_Element
@@ -316,7 +316,7 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Adds category to this entry
      *
      * @param mixed $term the term used to decribe this category or a
-     *   XML_Atom_Category object.
+     *                    {@link XML_Atom_Category} object.
      * @param string $scheme the scheme to be added.
      * @param string $label the label to be added.
      * @param string $language the language to be added.
@@ -373,7 +373,7 @@ class XML_Atom_Entry extends XML_Atom_Element
         $document->formatOutput = true;
 
         $name = (strlen($prefix) > 0) ? $prefix . ':entry' : 'entry';
-        $entry = $document->createElementNS(XML_Atom_Node::NAMESPACE, $name);
+        $entry = $document->createElementNS(XML_Atom_Node::NS, $name);
         $document->appendChild($entry);
 
         $this->_getNode($entry);
@@ -397,7 +397,7 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Creates an entry node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   entry node.
+     *                              entry node.
      *
      * @return DOMNode the new entry node.
      */
@@ -406,10 +406,9 @@ class XML_Atom_Entry extends XML_Atom_Element
         $namespace = $context_node->namespaceURI;
         $local_name = $context_node->localName;
 
-        if ($namespace == XML_Atom_Node::NAMESPACE && $local_name == 'feed') {
+        if ($namespace == XML_Atom_Node::NS && $local_name == 'feed') {
             $document = $context_node->ownerDocument;
-            $node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'entry');
+            $node = $document->createElementNS(XML_Atom_Node::NS, 'entry');
         } else {
             $node = $context_node;
         }
@@ -423,8 +422,8 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Builds all the XML information contained inside this node.
      *
-     * @param DOMNode $node the parent node that will contain the XML genereated
-     *   by this node.
+     * @param DOMNode $node the parent node that will contain the XML
+                            genereated by this node.
      */
     protected function _buildNode(DOMNode $node)
     {
@@ -447,7 +446,7 @@ class XML_Atom_Entry extends XML_Atom_Element
         }
 
         $id_text_node = $document->createTextNode($this->_id);
-        $id_node = $document->createElementNS(XML_Atom_Node::NAMESPACE, 'id');
+        $id_node = $document->createElementNS(XML_Atom_Node::NS, 'id');
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
 
@@ -461,9 +460,10 @@ class XML_Atom_Entry extends XML_Atom_Element
 
         if ($this->_rights != '') {
             $rights_text_node = $document->createTextNode($this->_rights);
-            $rights_node = $document->createElementNS(XML_Atom_Node::NAMESPACE,
-                'rights');
-
+            $rights_node = $document->createElementNS(
+                XML_Atom_Node::NS,
+                'rights'
+            );
             $rights_node->appendChild($rights_text_node);
             $node->appendChild($rights_node);
         }
