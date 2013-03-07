@@ -8,7 +8,7 @@ require_once 'XML/Atom/Node.php';
  * A abstract class used to model the features of an element.
  *
  * @package   XML_Atom
- * @copyright 2008 silverorange
+ * @copyright 2008-2013 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 abstract class XML_Atom_Element extends XML_Atom_Node
@@ -43,6 +43,8 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      * Sets the base of this node.
      *
      * @param string $base the base this node should use.
+     *
+     * @return void
      */
     public function setBase($base)
     {
@@ -56,6 +58,8 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      * Sets the language of this node.
      *
      * @param string $language the language this node should use.
+     *
+     * @return void
      */
     public function setLanguage($language)
     {
@@ -69,7 +73,9 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      * Adds a namespace to this node.
      *
      * @param string $prefix the prefix of this namespace.
-     * @param string $uri the URI of this namespace.
+     * @param string $uri    the URI of this namespace.
+     *
+     * @return void
      */
     public function addNamespace($prefix, $uri)
     {
@@ -83,6 +89,8 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      * Builds the XML namespaces into a node.
      *
      * @param DOMNode $node the node to add the XML namespaces to.
+     *
+     * @return void
      */
     protected function _buildNamespaces(DOMNode $node)
     {
@@ -98,6 +106,8 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      * Builds the language and base common attributes into a node
      *
      * @param DOMNode $node the node to add the common attributes to.
+     *
+     * @return void
      */
     protected function _buildCommonAttributes(DOMNode $node)
     {

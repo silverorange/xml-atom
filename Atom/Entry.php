@@ -116,10 +116,10 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Contructs this XML_Atom_Entry
      *
-     * @param string $id the id of the person to use.
-     * @param mixed $title the title to use or a XML_Atom_Title object.
-     * @param mixed $updated the updated date to use or a XML_Atom_Updated
-     *   object.
+     * @param string $id      the id of the person to use.
+     * @param mixed  $title   the title to use or a XML_Atom_Title object.
+     * @param mixed  $updated the updated date to use or a
+     *                        {@link XML_Atom_Updated} object.
      */
     public function __construct($id, $title, $updated = null)
     {
@@ -135,6 +135,8 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Sets the id of this node.
      *
      * @param string $id the id to set this node to.
+     *
+     * @return void
      */
     public function setId($id)
     {
@@ -147,8 +149,10 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Set the title of this entry
      *
-     * @param mixed $title the title to use or a XML_Atom_Updated object.
-     * @param string $type the type to use.
+     * @param mixed  $title the title to use or a XML_Atom_Updated object.
+     * @param string $type  the type to use.
+     *
+     * @return void
      */
     public function setTitle($title, $type = 'text')
     {
@@ -166,7 +170,9 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Set the updated date of this entry
      *
      * @param mixed $updated the updated date to use or a XML_Atom_Updated
-     *   object.
+     *                       object.
+     *
+     * @return void
      */
     public function setUpdated($updated)
     {
@@ -183,8 +189,10 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Set the published date of this entry
      *
-     * @param mixed $published the published date to use or a XML_Atom_Published
-     *   object.
+     * @param mixed $published the published date to use or an
+     *                         {@link XML_Atom_Published} object.
+     *
+     * @return void
      */
     public function setPublished($published)
     {
@@ -202,9 +210,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Set the content of this entry
      *
-     * @param mixed $title the content to use or a XML_Atom_Content object.
-     * @param string $type the type to use.
+     * @param mixed  $title    the content to use or an
+     *                         {@link XML_Atom_Content} object.
+     * @param string $type     the type to use.
      * @param string $language the type to use.
+     *
+     * @return void
      */
     public function setContent($content, $type = 'text', $language = '')
     {
@@ -221,9 +232,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Set the summary of this entry
      *
-     * @param mixed $summary the summary to use or a XML_Atom_Summary object.
-     * @param string $type the type to use.
+     * @param mixed  $summary  the summary to use or an
+     *                         {@link XML_Atom_Summary} object.
+     * @param string $type     the type to use.
      * @param string $language the type to use.
+     *
+     * @return void
      */
     public function setSummary($summary, $type = 'text', $language = '')
     {
@@ -241,6 +255,8 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Sets the rights of this node.
      *
      * @param string $rights the rights to set this node to.
+     *
+     * @return void
      */
     public function setRights($rights)
     {
@@ -253,8 +269,11 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Set the source of this entry
      *
-     * @param mixed $source the source to use in the form of a XML_Atom_Feed
-     *   object or a XML_Atom_Source object.
+     * @param mixed $source the source to use in the form of an
+     *                      {@link XML_Atom_Feed} object or an
+     *                      {@link XML_Atom_Source} object.
+     *
+     * @return void
      */
     public function setSource($source)
     {
@@ -273,9 +292,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Adds an author to this entry
      *
-     * @param mixed $name the name to be added or a XML_Atom_Author object.
-     * @param string $uri the URI to be added.
+     * @param mixed  $name  the name to be added or an
+     *                      {@link XML_Atom_Author} object.
+     * @param string $uri   the URI to be added.
      * @param string $email the email to be added.
+     *
+     * @return void
      */
     public function addAuthor($name, $uri = '', $email = '')
     {
@@ -294,9 +316,12 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Adds a contributor to this entry
      *
-     * @param mixed $name the name to be added or a XML_Atom_Contributor object.
-     * @param string $uri the URI to be added.
+     * @param mixed  $name  the name to be added or an
+     *                      {@link XML_Atom_Contributor} object.
+     * @param string $uri   the URI to be added.
      * @param string $email the email to be added.
+     *
+     * @return void
      */
     public function addContributor($name, $uri = '', $email = '')
     {
@@ -315,11 +340,13 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Adds category to this entry
      *
-     * @param mixed $term the term used to decribe this category or a
-     *                    {@link XML_Atom_Category} object.
-     * @param string $scheme the scheme to be added.
-     * @param string $label the label to be added.
+     * @param mixed  $term     the term used to decribe this category or an
+     *                         {@link XML_Atom_Category} object.
+     * @param string $scheme   the scheme to be added.
+     * @param string $label    the label to be added.
      * @param string $language the language to be added.
+     *
+     * @return void
      */
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
@@ -340,10 +367,14 @@ class XML_Atom_Entry extends XML_Atom_Element
     /**
      * Adds a link to this entry
      *
-     * @param XML_Atom_Link|string $href the href of the link or a link object.
-     * @param string $rel optional. The link relationship.
-     * @param string $type optional. The type of the link.
-     * @param string $hreflang optional. The language of the link.
+     * @param XML_Atom_Link|string $href     the href of the link or an
+     *                                       {@link XML_Atom_Link} object.
+     * @param string               $rel      optional. The link relationship.
+     * @param string               $type     optional. The type of the link.
+     * @param string               $hreflang optional. The language of the
+     *                                       link.
+     *
+     * @return void
      */
     public function addLink($href, $rel = '', $type = '', $hreflang = '')
     {
@@ -423,7 +454,9 @@ class XML_Atom_Entry extends XML_Atom_Element
      * Builds all the XML information contained inside this node.
      *
      * @param DOMNode $node the parent node that will contain the XML
-                            genereated by this node.
+     *                      generated by this node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {

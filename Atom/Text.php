@@ -35,8 +35,8 @@ abstract class XML_Atom_Text extends XML_Atom_Element
     /**
      * Contructs this XML_Atom_Text
      *
-     * @param string $text the text to use.
-     * @param string $type the type to use.
+     * @param string $text     the text to use.
+     * @param string $type     the type to use.
      * @param string $language the langauge to use.
      */
     public function __construct($text, $type = 'text', $language = '')
@@ -53,6 +53,8 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      * Sets the text of this node
      *
      * @param string $text the text this node should use.
+     *
+     * @return void
      */
     public function setText($text)
     {
@@ -66,6 +68,8 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      * Sets the type of this node
      *
      * @param string $type the type this node should use.
+     *
+     * @return void
      */
     public function setType($type)
     {

@@ -132,6 +132,8 @@ class XML_Atom_Source extends XML_Atom_Element
      * Sets the id of this source node
      *
      * @param mixed $id the id to set this source to.
+     *
+     * @return void
      */
     public function setId($id)
     {
@@ -144,8 +146,11 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Sets the title of this source node
      *
-     * @param mixed $title the title to set or a XML_Atom_Title object.
-     * @param string $type the type used to describe this title.
+     * @param mixed  $title the title to set or an {@link XML_Atom_Title}
+     *                      object.
+     * @param string $type  the type used to describe this title.
+     *
+     * @return void
      */
     public function setTitle($title, $type = 'text')
     {
@@ -162,8 +167,10 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Sets the updated of this source node
      *
-     * @param mixed $updated the date this was last updated or a
-     *                       XML_Atom_Updated object.
+     * @param mixed $updated the date this was last updated or an
+     *                       {@link XML_Atom_Updated} object.
+     *
+     * @return void
      */
     public function setUpdated($updated)
     {
@@ -180,9 +187,11 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Sets the subtitle of this source node
      *
-     * @param mixed $subtitle the subtitle of this source or a XML_Atom_Subtitle
-     *   object.
-     * @param string $type the type that describes this subtitle.
+     * @param mixed  $subtitle the subtitle of this source or an
+     *                         {@link XML_Atom_Subtitle} object.
+     * @param string $type     the type that describes this subtitle.
+     *
+     * @return void
      */
     public function setSubtitle($subtitle, $type = 'text')
     {
@@ -200,6 +209,8 @@ class XML_Atom_Source extends XML_Atom_Element
      * Sets the icon of this source node
      *
      * @param mixed $icon the icon to set for this source.
+     *
+     * @return void
      */
     public function setIcon($icon)
     {
@@ -213,6 +224,8 @@ class XML_Atom_Source extends XML_Atom_Element
      * Sets the logo of this source node
      *
      * @param mixed $logo the logo to set for this source.
+     *
+     * @return void
      */
     public function setLogo($logo)
     {
@@ -226,6 +239,8 @@ class XML_Atom_Source extends XML_Atom_Element
      * Sets the rights of this source node
      *
      * @param mixed $rights the rights to set for this source.
+     *
+     * @return void
      */
     public function setRights($rights)
     {
@@ -238,10 +253,12 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Sets the generator of this source node
      *
-     * @param mixed $generator the subtitle of this source or a
-     *   XML_Atom_Generator object.
-     * @param string $uri the uri of this generator.
-     * @param string $version the version of this generator.
+     * @param mixed  $generator the subtitle of this source or an
+     *                          {@link XML_Atom_Generator} object.
+     * @param string $uri       the uri of this generator.
+     * @param string $version   the version of this generator.
+     *
+     * @return void
      */
     public function setGenerator($generator, $uri = '', $version = '')
     {
@@ -259,9 +276,12 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Adds an author to the source node
      *
-     * @param mixed $name the name or the author of the XML_Atom_Author object.
-     * @param string $uri the uri of the author.
+     * @param mixed  $name  the name or the author or an
+     *                      {@link XML_Atom_Author} object.
+     * @param string $uri   the uri of the author.
      * @param string $email the email of the author.
+     *
+     * @return void
      */
     public function addAuthor($name, $uri = '', $email = '')
     {
@@ -280,10 +300,12 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Adds a contributor to this source node
      *
-     * @param mixed $name the name of the contributor or the
-     *   XML_Atom_Contributor object.
-     * @param string $uri the uri of the contributor.
+     * @param mixed  $name  the name of the contributor or an
+     *                      {@link XML_Atom_Contributor object.
+     * @param string $uri   the uri of the contributor.
      * @param string $email the email of the contributor.
+     *
+     * @return void
      */
     public function addContributor($name, $uri = '', $email = '')
     {
@@ -302,11 +324,13 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Adds a category to this source node
      *
-     * @param mixed $term the term of the category or the XML_Atom_Category
-     *   object.
-     * @param string $sheme the scheme of the category.
-     * @param string $label the label of the category.
+     * @param mixed  $term     the term of the category or an
+     *                         {@link XML_Atom_Category} object.
+     * @param string $sheme    the scheme of the category.
+     * @param string $label    the label of the category.
      * @param string $language the language of the category.
+     *
+     * @return void
      */
     public function addCategory($term, $scheme = '', $label = '',
         $language = '')
@@ -327,10 +351,13 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Adds a link to this entry
      *
-     * @param XML_Atom_Link|string $href the href of the link or a link object.
-     * @param string $rel optional. The link relationship.
-     * @param string $type optional. The type of the link.
-     * @param string $hreflang optional. The language of the link.
+     * @param XML_Atom_Link|string $href     the href of the link or an
+     *                                       {@link XML_Atom_Link} object.
+     * @param string               $rel      optional. The link relationship.
+     * @param string               $type     optional. The type of the link.
+     * @param string               $hreflang optional. The language of the link.
+     *
+     * @return void
      */
     public function addLink($href, $rel = '', $type = '', $hreflang = '')
     {
@@ -350,7 +377,7 @@ class XML_Atom_Source extends XML_Atom_Element
      * Creates a source node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   source node.
+     *                              source node.
      *
      * @return DOMNode the new source node.
      */
@@ -366,8 +393,10 @@ class XML_Atom_Source extends XML_Atom_Element
     /**
      * Builds all the XML information contained inside this node.
      *
-     * @param DOMNode $node the parent node that will contain the XML genereated
-     *   by this node.
+     * @param DOMNode $node the parent node that will contain the XML generated
+     *                      by this node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {

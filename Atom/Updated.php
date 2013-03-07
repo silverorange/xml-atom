@@ -19,7 +19,7 @@ class XML_Atom_Updated extends XML_Atom_Date
      * Creates a updated date node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   updated date node.
+     *                              updated date node.
      *
      * @return DOMNode the new updated date node.
      */

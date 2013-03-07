@@ -27,6 +27,8 @@ abstract class XML_Atom_Node
      * Creates a node
      *
      * @param DOMNode $context_node the parent node that will contain this node.
+     *
+     * @return XML_Atom_Node
      */
     abstract protected function _createNode(DOMNode $context_node);
 
@@ -34,10 +36,12 @@ abstract class XML_Atom_Node
     // {{{ abstract protected function _buildNode()
 
     /**
-     * Builds all the XML information contained inside this node.
+     * Builds all the XML information contained inside this node
      *
-     * @param DOMNode $node the parent node that will contain the XML genereated
-     *   by this node.
+     * @param DOMNode $node the parent node that will contain the XML generated
+     *                      by this node.
+     *
+     * @return void
      */
     abstract protected function _buildNode(DOMNode $node);
 

@@ -43,8 +43,8 @@ class XML_Atom_Generator extends XML_Atom_Element
      * Contruct this XML_Atom_Generator
      *
      * @param string $generator the generator to use.
-     * @param string $uri the URI to use.
-     * @param string $version the version to use.
+     * @param string $uri       the URI to use.
+     * @param string $version   the version to use.
      */
     public function __construct($generator, $uri = '', $version = '')
     {
@@ -60,6 +60,8 @@ class XML_Atom_Generator extends XML_Atom_Element
      * Sets the generator of this node.
      *
      * @param string $generator the generator to set this node to.
+     *
+     * @return void
      */
     public function setGenerator($generator)
     {
@@ -73,6 +75,8 @@ class XML_Atom_Generator extends XML_Atom_Element
      * Sets the URI of this node.
      *
      * @param string $uri the URI to set this node to.
+     *
+     * @return void
      */
     public function setUri($uri)
     {
@@ -86,6 +90,8 @@ class XML_Atom_Generator extends XML_Atom_Element
      * Sets the version of this node.
      *
      * @param string $version the version to set this node to.
+     *
+     * @return void
      */
     public function setVersion($version)
     {
@@ -99,7 +105,7 @@ class XML_Atom_Generator extends XML_Atom_Element
      * Creates a generator node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   generator node.
+     *                              generator node.
      *
      * @return DOMNode the new generator node.
      */
@@ -113,10 +119,12 @@ class XML_Atom_Generator extends XML_Atom_Element
     // {{{ protected function _buildNode()
 
     /**
-     * Builds all the XML information contained inside a generator node.
+     * Builds all the XML information contained inside this generator node
      *
-     * @param DOMNode $node the node that will contain the XML genereated
-     *   by this generator node.
+     * @param DOMNode $node the node that will contain the XML generated
+     *                      by this generator node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {

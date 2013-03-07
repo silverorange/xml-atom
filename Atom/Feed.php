@@ -75,8 +75,11 @@ class XML_Atom_Feed extends XML_Atom_Source
 
     public function toSource()
     {
-        $source = new XML_Atom_Source($this->_id, $this->_title,
-            $this->_updated);
+        $source = new XML_Atom_Source(
+            $this->_id,
+            $this->_title,
+            $this->_updated
+        );
 
         $source->setSubTitle($this->_sub_title);
         $source->setIcon($this->_icon);
@@ -105,11 +108,14 @@ class XML_Atom_Feed extends XML_Atom_Source
     // {{{ protected function _buildNode()
 
     /**
-     * Builds all the XML information contained inside this node. Added each
-     *  entry contained in this node to the parent node.
+     * Builds all the XML information contained inside this node
      *
-     * @param DOMNode $node the parent node that will contain the XML genereated
-     *   by this node.
+     * Adds each entry contained in this node to the parent node.
+     *
+     * @param DOMNode $node the parent node that will contain the XML generated
+     *                      by this node.
+     *
+     * @return void
      */
     protected function _buildNode(DOMNode $node)
     {

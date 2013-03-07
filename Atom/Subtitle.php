@@ -19,7 +19,7 @@ class XML_Atom_Subtitle extends XML_Atom_Text
      * Creates a subtitle node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   subtitle node.
+     *                              subtitle node.
      *
      * @return DOMNode the new subtitle node.
      */

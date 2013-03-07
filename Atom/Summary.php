@@ -19,9 +19,9 @@ class XML_Atom_Summary extends XML_Atom_Text
      * Creates a summary node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   summary node.
+     *                              summary node.
      *
-     * @return DOMNode the summary date node.
+     * @return DOMNode the summary node.
      */
     protected function _createNode(DOMNode $context_node)
     {

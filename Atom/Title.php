@@ -16,12 +16,12 @@ class XML_Atom_Title extends XML_Atom_Text
     // {{{ protected function _createNode()
 
     /**
-     * Creates a text node
+     * Creates a title node
      *
      * @param DOMNode $context_node the parent node that will contain this
-     *   text node.
+     *                              title node.
      *
-     * @return DOMNode the new text node.
+     * @return DOMNode the new title node.
      */
     protected function _createNode(DOMNode $context_node)
     {
