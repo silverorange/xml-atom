@@ -3,11 +3,6 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * Date class definition.
- */
-require_once 'HotDate/HotDateTime.php';
-
-/**
  * Element class definition.
  */
 require_once 'XML/Atom/Element.php';
@@ -33,7 +28,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * The date represented by this element
      *
-     * @var HotDateTime
+     * @var DateTime
      *
      * @see XML_Atom_Date::setDate()
      */
@@ -45,10 +40,10 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * Creates a new Date
      *
-     * @param string|HotDateTime $date the date to use. This can be either an
-     *                                 already constructed HotDateTime object
+     * @param string|DateTime $date the date to use. This can be either an
+     *                                 already constructed DateTime object
      *                                 or a textual representation of a date
-     *                                 that can be parsed by the HotDateTime
+     *                                 that can be parsed by the DateTime
      *                                 class.
      */
     public function __construct($date)
@@ -62,18 +57,18 @@ abstract class XML_Atom_Date extends XML_Atom_Element
     /**
      * Sets the date of this date element
      *
-     * @param string|HotDateTime $date the date to use. This can be either an
-     *                                 already constructed HotDateTime object
+     * @param string|DateTime $date the date to use. This can be either an
+     *                                 already constructed DateTime object
      *                                 or a textual representation of a date
-     *                                 that can be parsed by the HotDateTime
+     *                                 that can be parsed by the DateTime
      *                                 class.
      *
      * @return void
      */
     public function setDate($date)
     {
-        if (!($date instanceof HotDateTime)) {
-            $date = new HotDateTime($date);
+        if (!($date instanceof DateTime)) {
+            $date = new DateTime($date);
         }
 
         $this->_date = $date;

@@ -49,8 +49,7 @@ $package->addIgnore('*.tgz');
 $package->addMaintainer('lead', 'gauthierm', 'Mike Gauthier',
     'mike@silverorange.com');
 
-$package->setPhpDep('5.2.1');
-$package->addPackageDepWithChannel('required', 'HotDate', 'pear.silverorange.com', '0.0.1');
+$package->setPhpDep('5.3.0');
 $package->setPearinstallerDep('1.4.0');
 $package->generateContents();
 
