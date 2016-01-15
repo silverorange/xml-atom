@@ -19,13 +19,12 @@ $description =
 $package = new PEAR_PackageFileManager2();
 
 $package->setOptions(array(
-    'filelistgenerator'      => 'svn',
-    'simpleoutput'           => true,
-    'baseinstalldir'         => '/XML',
-    'packagedirectory'       => './',
-    'dir_roles'              => array(
-        'XML/Atom'           => 'php',
-        'tests'              => 'test'
+    'filelistgenerator' => 'file',
+    'simpleoutput'      => true,
+    'baseinstalldir'    => '/',
+    'packagedirectory'  => './',
+    'dir_roles'         => array(
+        'tests'         => 'test'
     )
 ));
 
