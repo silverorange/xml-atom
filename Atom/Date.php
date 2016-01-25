@@ -17,7 +17,7 @@ require_once 'XML/Atom/Element.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2016 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/XML_Atom
  */

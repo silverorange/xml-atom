@@ -8,7 +8,7 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a generator node.
  *
  * @package   XML_Atom
- * @copyright 2008-2013 silverorange
+ * @copyright 2008-2016 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Generator extends XML_Atom_Element

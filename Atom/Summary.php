@@ -8,7 +8,7 @@ require_once 'XML/Atom/Text.php';
  * A class used to represent a summary node.
  *
  * @package   XML_Atom
- * @copyright 2008-2013 silverorange
+ * @copyright 2008-2016 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Summary extends XML_Atom_Text
