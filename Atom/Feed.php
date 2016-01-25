@@ -9,7 +9,7 @@ require_once 'XML/Atom/Source.php';
  * A class used to generate all the entires in a feed.
  *
  * @package   XML_Atom
- * @copyright 2008-2013 silverorange
+ * @copyright 2008-2016 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 class XML_Atom_Feed extends XML_Atom_Source

@@ -6,7 +6,7 @@
  * A abstract class used to model a generic XML node.
  *
  * @package   XML_Atom
- * @copyright 2008-2013 silverorange
+ * @copyright 2008-2016 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  */
 abstract class XML_Atom_Node
