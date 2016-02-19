@@ -24,7 +24,8 @@
 		"source": "https://github.com/silverorange/xml-atom"
 	},
 	"require": {
-		"php": ">=5.3.0"
+		"php": ">=5.3.0",
+		"ext-dom": "*"
 	},
 	"autoload": {
 		"psr-0": {
