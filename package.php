@@ -5,7 +5,7 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$release_version = '1.0.2';
+$release_version = '1.0.3';
 $release_state   = 'alpha';
 $release_notes   =
     'First release.';
