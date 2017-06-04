@@ -3,7 +3,6 @@
 /**
  * Person class definition.
  */
-require_once 'XML/Atom/Person.php';
 
 /**
  * An {@link XML_Atom_Person} that indicates a contributor to an entry or feed

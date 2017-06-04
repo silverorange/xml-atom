@@ -1,7 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Node.php';
-
 /**
  * A abstract class used to model the features of an element.
  *

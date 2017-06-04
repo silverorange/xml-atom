@@ -1,7 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Date.php';
-
 /**
  * A class used to generate a updated date node.
  *

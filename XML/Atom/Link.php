@@ -1,7 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Element.php';
-
 /**
  * A class used to generate a link node.
  *

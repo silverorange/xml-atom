@@ -3,7 +3,6 @@
 /**
  * Date class definition.
  */
-require_once 'XML/Atom/Date.php';
 
 /**
  * An {@link XML_Atom_Date} that indicates the date an entry or feed was

@@ -1,18 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Element.php';
-require_once 'XML/Atom/Author.php';
-require_once 'XML/Atom/Category.php';
-require_once 'XML/Atom/Content.php';
-require_once 'XML/Atom/Contributor.php';
-require_once 'XML/Atom/Feed.php';
-require_once 'XML/Atom/Link.php';
-require_once 'XML/Atom/Published.php';
-require_once 'XML/Atom/Source.php';
-require_once 'XML/Atom/Summary.php';
-require_once 'XML/Atom/Title.php';
-require_once 'XML/Atom/Updated.php';
-
 /**
  * A class used to generate an entry node.
  *

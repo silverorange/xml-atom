@@ -39,8 +39,5 @@
     "psr-0": {
       "XML_Atom" : ""
     }
-  },
-  "include-path": [
-    "./"
-  ]
+  }
 }
