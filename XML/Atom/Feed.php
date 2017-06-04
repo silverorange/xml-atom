@@ -1,7 +1,5 @@
 <?php
 
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
-
 require_once 'XML/Atom/Entry.php';
 require_once 'XML/Atom/Source.php';
 
