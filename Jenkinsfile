@@ -23,11 +23,5 @@ pipeline {
                 '''
             }
         }
-
-        stage('Test') {
-            steps {
-                sh 'php tests/test.php'
-            }
-        }
     }
 }
