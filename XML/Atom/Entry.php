@@ -194,8 +194,9 @@ class XML_Atom_Entry extends XML_Atom_Element
      */
     public function setPublished($published)
     {
-        if (!($published === null ||
-            $published instanceof XML_Atom_Published)) {
+        if (!($published === null
+            || $published instanceof XML_Atom_Published)
+        ) {
             $published = new XML_Atom_Published($published);
         }
 
@@ -346,14 +347,21 @@ class XML_Atom_Entry extends XML_Atom_Element
      *
      * @return void
      */
-    public function addCategory($term, $scheme = '', $label = '',
-        $language = '')
-    {
+    public function addCategory(
+        $term,
+        $scheme = '',
+        $label = '',
+        $language = ''
+    ) {
         if ($term instanceof XML_Atom_Category) {
             $category = $term;
         } else {
-            $category = new XML_Atom_Category($term, $scheme, $label,
-                $language);
+            $category = new XML_Atom_Category(
+                $term,
+                $scheme,
+                $label,
+                $language
+            );
         }
 
         $this->_categories[] = $category;

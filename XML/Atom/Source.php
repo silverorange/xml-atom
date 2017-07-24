@@ -260,8 +260,9 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setGenerator($generator, $uri = '', $version = '')
     {
-        if (!($generator === null ||
-            $generator instanceof XML_Atom_Generator)) {
+        if (!($generator === null
+            || $generator instanceof XML_Atom_Generator)
+        ) {
             $generator = new XML_Atom_Generator($generator, $uri, $version);
         }
 
@@ -330,14 +331,21 @@ class XML_Atom_Source extends XML_Atom_Element
      *
      * @return void
      */
-    public function addCategory($term, $scheme = '', $label = '',
-        $language = '')
-    {
+    public function addCategory(
+        $term,
+        $scheme = '',
+        $label = '',
+        $language = ''
+    ) {
         if ($term instanceof XML_Atom_Category) {
             $category = $term;
         } else {
-            $category = new XML_Atom_Category($term, $scheme, $label,
-                $language);
+            $category = new XML_Atom_Category(
+                $term,
+                $scheme,
+                $label,
+                $language
+            );
         }
 
         $this->_categories[] = $category;

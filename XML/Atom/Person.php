@@ -5,8 +5,6 @@
  */
 require_once 'XML/Atom/Element.php';
 
-// {{{ class XML_Atom_Person
-
 /**
  * Abstract base class used to describe a person, corporation or similar entity
  * in some context in an Atom document
@@ -128,8 +126,10 @@ abstract class XML_Atom_Person extends XML_Atom_Element
     {
         $document = $node->ownerDocument;
 
-        $name_node = $document->createElementNS(XML_Atom_Node::NS,
-            'name');
+        $name_node = $document->createElementNS(
+            XML_Atom_Node::NS,
+            'name'
+        );
 
         $name_content = $document->createTextNode($this->_name);
         $name_node->appendChild($name_content);
@@ -158,7 +158,5 @@ abstract class XML_Atom_Person extends XML_Atom_Element
 
     // }}}
 }
-
-// }}}
 
 ?>

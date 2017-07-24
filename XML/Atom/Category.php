@@ -45,9 +45,12 @@ class XML_Atom_Category extends XML_Atom_Element
      * @param string $label    the label to use.
      * @param string $language the language to use.
      */
-    public function __construct($term, $scheme = '', $label = '',
-        $language = '')
-    {
+    public function __construct(
+        $term,
+        $scheme = '',
+        $label = '',
+        $language = ''
+    ) {
         $this->setTerm($term);
         $this->setScheme($scheme);
         $this->setLabel($label, $language);
