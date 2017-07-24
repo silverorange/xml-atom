@@ -15,9 +15,9 @@ require_once 'XML/Atom/Element.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @link      http://pear.php.net/package/XML_Atom
+ * @link      https://github.com/silverorange/xml-atom
  */
 abstract class XML_Atom_Person extends XML_Atom_Element
 {
@@ -28,7 +28,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_name = '';
+    protected $name = '';
 
     /**
      * The URI of this person
@@ -37,14 +37,14 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_uri = '';
+    protected $uri = '';
 
     /**
      * The e-mail address of this person
      *
      * @var string
      */
-    protected $_email = '';
+    protected $email = '';
 
     // }}}
     // {{{ public function __construct()
@@ -75,7 +75,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      */
     public function setName($name)
     {
-        $this->_name = strval($name);
+        $this->name = strval($name);
     }
 
     // }}}
@@ -90,7 +90,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      */
     public function setUri($uri)
     {
-        $this->_uri = strval($uri);
+        $this->uri = strval($uri);
     }
 
     // }}}
@@ -105,11 +105,11 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      */
     public function setEmail($email)
     {
-        $this->_email = strval($email);
+        $this->email = strval($email);
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds and creates the Atom XML nodes required by this person
@@ -122,7 +122,7 @@ abstract class XML_Atom_Person extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
@@ -131,25 +131,25 @@ abstract class XML_Atom_Person extends XML_Atom_Element
             'name'
         );
 
-        $name_content = $document->createTextNode($this->_name);
+        $name_content = $document->createTextNode($this->name);
         $name_node->appendChild($name_content);
 
         $node->appendChild($name_node);
 
-        if ($this->_uri != '') {
+        if ($this->uri != '') {
             $uri_node = $document->createElementNS(XML_Atom_Node::NS, 'uri');
-            $uri_content = $document->createTextNode($this->_uri);
+            $uri_content = $document->createTextNode($this->uri);
             $uri_node->appendChild($uri_content);
 
             $node->appendChild($uri_node);
         }
 
-        if ($this->_email != '') {
+        if ($this->email != '') {
             $email_node = $document->createElementNS(
                 XML_Atom_Node::NS,
                 'email'
             );
-            $email_content = $document->createTextNode($this->_email);
+            $email_content = $document->createTextNode($this->email);
             $email_node->appendChild($email_content);
 
             $node->appendChild($email_node);

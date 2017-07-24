@@ -5,13 +5,15 @@ require_once 'XML/Atom/Text.php';
 /**
  * A class used to generate a content node.
  *
+ * @category  XML
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Content extends XML_Atom_Text
 {
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates a content DOMElement node for this content
@@ -21,14 +23,14 @@ class XML_Atom_Content extends XML_Atom_Text
      *
      * @return DOMNode the content DOMElement node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'content');
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds and creates the Atom XML nodes required by this content
@@ -43,13 +45,13 @@ class XML_Atom_Content extends XML_Atom_Text
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->_type);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->type);
 
-        $cdata_node = $document->createCDATASection($this->_text);
+        $cdata_node = $document->createCDATASection($this->text);
         $node->appendChild($cdata_node);
     }
 

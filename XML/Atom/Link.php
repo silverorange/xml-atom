@@ -6,8 +6,9 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a link node.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Link extends XML_Atom_Element
 {
@@ -18,42 +19,42 @@ class XML_Atom_Link extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_href = '';
+    protected $href = '';
 
     /**
      * The relation of this node
      *
      * @var string
      */
-    protected $_rel = '';
+    protected $rel = '';
 
     /**
      * The type of this node
      *
      * @var string
      */
-    protected $_type = '';
+    protected $type = '';
 
     /**
      * The href language of this node
      *
      * @var string
      */
-    protected $_hreflang = '';
+    protected $hreflang = '';
 
     /**
      * The title of this node
      *
      * @var string
      */
-    protected $_title = '';
+    protected $title = '';
 
     /**
      * The length of this node
      *
      * @var string
      */
-    protected $_length = null;
+    protected $length = null;
 
     // }}}
     // {{{ public function __construct()
@@ -84,7 +85,7 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     public function setHref($href)
     {
-        $this->_href = strval($href);
+        $this->href = strval($href);
     }
 
     // }}}
@@ -99,7 +100,7 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     public function setHrefLanguage($hreflang)
     {
-        $this->_hreflang = strval($hreflang);
+        $this->hreflang = strval($hreflang);
     }
 
     // }}}
@@ -114,7 +115,7 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     public function setRelation($rel)
     {
-        $this->_rel = strval($rel);
+        $this->rel = strval($rel);
     }
 
     // }}}
@@ -129,7 +130,7 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     public function setType($type)
     {
-        $this->_type = strval($type);
+        $this->type = strval($type);
     }
 
     // }}}
@@ -144,7 +145,7 @@ class XML_Atom_Link extends XML_Atom_Element
      */
     public function setTitle($title)
     {
-        $this->_title = strval($title);
+        $this->title = strval($title);
     }
 
     // }}}
@@ -163,11 +164,11 @@ class XML_Atom_Link extends XML_Atom_Element
             $length = intval($length);
         }
 
-        $this->_length = $length;
+        $this->length = $length;
     }
 
     // }}}
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates a link node
@@ -177,14 +178,14 @@ class XML_Atom_Link extends XML_Atom_Element
      *
      * @return DOMNode the new link node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'link');
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this link node.
@@ -194,32 +195,32 @@ class XML_Atom_Link extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
-        $node->setAttributeNS(XML_Atom_Node::NS, 'href', $this->_href);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'href', $this->href);
 
-        if ($this->_rel != '') {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'rel', $this->_rel);
+        if ($this->rel != '') {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'rel', $this->rel);
         }
 
-        if ($this->_type != '') {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->_type);
+        if ($this->type != '') {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->type);
         }
 
-        if ($this->_hreflang != '') {
+        if ($this->hreflang != '') {
             $node->setAttributeNS(
                 XML_Atom_Node::NS,
                 'hreflang',
-                $this->_hreflang
+                $this->hreflang
             );
         }
 
-        if ($this->_title != '') {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'title', $this->_title);
+        if ($this->title != '') {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'title', $this->title);
         }
 
-        if ($this->_length !== null) {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'length', $this->_length);
+        if ($this->length !== null) {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'length', $this->length);
         }
     }
 

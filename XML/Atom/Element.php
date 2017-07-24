@@ -6,8 +6,9 @@ require_once 'XML/Atom/Node.php';
  * A abstract class used to model the features of an element.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 abstract class XML_Atom_Element extends XML_Atom_Node
 {
@@ -18,21 +19,21 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      *
      * @var string
      */
-    protected $_language = '';
+    protected $language = '';
 
     /**
      * The base of this node
      *
      * @var string
      */
-    protected $_base = '';
+    protected $base = '';
 
     /**
      * An array of namespaces used for this node
      *
      * @var array()
      */
-    protected $_namespaces = array();
+    protected $namespaces = array();
 
     // }}}
     // {{{ public function setBase()
@@ -46,7 +47,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      */
     public function setBase($base)
     {
-        $this->_base = strval($base);
+        $this->base = strval($base);
     }
 
     // }}}
@@ -61,7 +62,7 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      */
     public function setLanguage($language)
     {
-        $this->_language = strval($language);
+        $this->language = strval($language);
     }
 
     // }}}
@@ -77,11 +78,11 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      */
     public function addNamespace($prefix, $uri)
     {
-        $this->_namespaces[strval($prefix)] = strval($uri);
+        $this->namespaces[strval($prefix)] = strval($uri);
     }
 
     // }}}
-    // {{{ protected function _buildNamespaces()
+    // {{{ protected function buildNamespaces()
 
     /**
      * Builds the XML namespaces into a node.
@@ -90,15 +91,15 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      *
      * @return void
      */
-    protected function _buildNamespaces(DOMNode $node)
+    protected function buildNamespaces(DOMNode $node)
     {
-        foreach ($this->_namespaces as $prefix => $uri) {
+        foreach ($this->namespaces as $prefix => $uri) {
             $node->setAttribute('xmlns:'.$prefix, $uri);
         }
     }
 
     // }}}
-    // {{{ protected function _buildCommonAttributes()
+    // {{{ protected function buildCommonAttributes()
 
     /**
      * Builds the language and base common attributes into a node
@@ -107,19 +108,19 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      *
      * @return void
      */
-    protected function _buildCommonAttributes(DOMNode $node)
+    protected function buildCommonAttributes(DOMNode $node)
     {
-        if ($this->_base != '') {
-            $node->setAttribute('xml:base', $this->_base);
+        if ($this->base != '') {
+            $node->setAttribute('xml:base', $this->base);
         }
 
-        if ($this->_language != '') {
-            $node->setAttribute('xml:lang', $this->_language);
+        if ($this->language != '') {
+            $node->setAttribute('xml:lang', $this->language);
         }
     }
 
     // }}}
-    // {{{ protected function _getNode()
+    // {{{ protected function getNode()
 
     /**
      * Gets a built copy of the current node.
@@ -128,27 +129,27 @@ abstract class XML_Atom_Element extends XML_Atom_Node
      *
      * @return DOMNode a built copy of the current node.
      */
-    protected function _getNode(DOMNode $context_node)
+    protected function getNode(DOMNode $context_node)
     {
-        $node = $this->_createNode($context_node);
+        $node = $this->createNode($context_node);
 
-        $this->_buildNamespaces($node);
-        $this->_buildCommonAttributes($node);
-        $this->_buildNode($node);
-        $this->_buildExtensionNodes($node);
+        $this->buildNamespaces($node);
+        $this->buildCommonAttributes($node);
+        $this->buildNode($node);
+        $this->buildExtensionNodes($node);
 
         return $node;
     }
 
     // }}}
-    // {{{ protected function _buildExtensionNodes()
+    // {{{ protected function buildExtensionNodes()
 
     /**
      * Builds the extension nodes...
      *
      * @param DOMNode $node
      */
-    protected function _buildExtensionNodes(DOMNode $node)
+    protected function buildExtensionNodes(DOMNode $node)
     {
     }
 

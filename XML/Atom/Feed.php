@@ -7,8 +7,9 @@ require_once 'XML/Atom/Source.php';
  * A class used to generate all the entires in a feed.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Feed extends XML_Atom_Source
 {
@@ -19,7 +20,7 @@ class XML_Atom_Feed extends XML_Atom_Source
      *
      * @var array()
      */
-    protected $_entries = array();
+    protected $entries = array();
 
     // }}}
     // {{{ public function addEntry()
@@ -31,7 +32,7 @@ class XML_Atom_Feed extends XML_Atom_Source
      */
     public function addEntry(XML_Atom_Entry $entry)
     {
-        $this->_entries[] = $entry;
+        $this->entries[] = $entry;
     }
 
     // }}}
@@ -54,7 +55,7 @@ class XML_Atom_Feed extends XML_Atom_Source
         $feed = $document->createElementNS(XML_Atom_Node::NS, $name);
         $document->appendChild($feed);
 
-        $this->_getNode($feed);
+        $this->getNode($feed);
 
         return $document;
     }
@@ -74,36 +75,36 @@ class XML_Atom_Feed extends XML_Atom_Source
     public function toSource()
     {
         $source = new XML_Atom_Source(
-            $this->_id,
-            $this->_title,
-            $this->_updated
+            $this->id,
+            $this->title,
+            $this->updated
         );
 
-        $source->setSubTitle($this->_sub_title);
-        $source->setIcon($this->_icon);
-        $source->setLogo($this->_logo);
-        $source->setRights($this->_rights);
-        $source->setGenerator($this->_generator);
+        $source->setSubTitle($this->sub_title);
+        $source->setIcon($this->icon);
+        $source->setLogo($this->logo);
+        $source->setRights($this->rights);
+        $source->setGenerator($this->generator);
 
-        foreach ($this->_authors as $author) {
+        foreach ($this->authors as $author) {
             $source->addAuthor($author);
         }
 
-        foreach ($this->_contributors as $contributor) {
+        foreach ($this->contributors as $contributor) {
             $source->addContributor($contributor);
         }
 
-        foreach ($this->_categories as $category) {
+        foreach ($this->categories as $category) {
             $source->addCategory($category);
         }
 
-        foreach ($this->_links as $link) {
+        foreach ($this->links as $link) {
             $source->addLink($link);
         }
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this node
@@ -115,17 +116,17 @@ class XML_Atom_Feed extends XML_Atom_Source
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
-        parent::_buildNode($node);
+        parent::buildNode($node);
 
-        foreach ($this->_entries as $entry) {
-            $node->appendChild($entry->_getNode($node));
+        foreach ($this->entries as $entry) {
+            $node->appendChild($entry->getNode($node));
         }
     }
 
     // }}}
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Gets a built copy of the current node.
@@ -134,7 +135,7 @@ class XML_Atom_Feed extends XML_Atom_Source
      *
      * @return DOMNode a build copy of the current node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         return $context_node;
     }

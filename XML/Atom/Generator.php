@@ -6,8 +6,9 @@ require_once 'XML/Atom/Element.php';
  * A class used to generate a generator node.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Generator extends XML_Atom_Element
 {
@@ -18,21 +19,21 @@ class XML_Atom_Generator extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_generator = '';
+    protected $generator = '';
 
     /**
      * The URI of this node
      *
      * @var string
      */
-    protected $_uri = '';
+    protected $uri = '';
 
     /**
      * The version of this node
      *
      * @var string
      */
-    protected $_version = '';
+    protected $version = '';
 
     // }}}
     // {{{ public function __construct()
@@ -63,7 +64,7 @@ class XML_Atom_Generator extends XML_Atom_Element
      */
     public function setGenerator($generator)
     {
-        $this->_generator = strval($generator);
+        $this->generator = strval($generator);
     }
 
     // }}}
@@ -78,7 +79,7 @@ class XML_Atom_Generator extends XML_Atom_Element
      */
     public function setUri($uri)
     {
-        $this->_uri = strval($uri);
+        $this->uri = strval($uri);
     }
 
     // }}}
@@ -93,11 +94,11 @@ class XML_Atom_Generator extends XML_Atom_Element
      */
     public function setVersion($version)
     {
-        $this->_version = strval($version);
+        $this->version = strval($version);
     }
 
     // }}}
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates a generator node
@@ -107,7 +108,7 @@ class XML_Atom_Generator extends XML_Atom_Element
      *
      * @return DOMNode the new generator node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'generator');
@@ -124,23 +125,23 @@ class XML_Atom_Generator extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        if ($this->_uri != '') {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'uri', $this->_uri);
+        if ($this->uri != '') {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'uri', $this->uri);
         }
 
-        if ($this->_version != '') {
+        if ($this->version != '') {
             $node->setAttributeNS(
                 XML_Atom_Node::NS,
                 'version',
-                $this->_version
+                $this->version
             );
         }
 
-        $generator_content = $document->createTextNode($this->_generator);
+        $generator_content = $document->createTextNode($this->generator);
         $node->appendChild($generator_content);
     }
 
