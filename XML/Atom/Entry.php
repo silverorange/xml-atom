@@ -23,6 +23,93 @@ require_once 'XML/Atom/Updated.php';
  */
 class XML_Atom_Entry extends XML_Atom_Element
 {
+    // {{{ protected properties
+
+    /**
+     * The id for this entry node
+     *
+     * @var string
+     */
+    protected $id = '';
+
+    /**
+     * The title for this entry node
+     *
+     * @var Atom_XML_Title
+     */
+    protected $title = null;
+
+    /**
+     * The updated date of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
+    protected $updated = null;
+
+    /**
+     * The published date of this entry node
+     *
+     * @var XML_Atom_Published
+     */
+    protected $published = null;
+
+    /**
+     * The content of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
+    protected $content = null;
+
+    /**
+     * The summary of this entry node
+     *
+     * @var XML_Atom_Updated
+     */
+    protected $summary = null;
+
+    /**
+     * The rights for this entry node
+     *
+     * @var string
+     */
+    protected $rights = '';
+
+    /**
+     * The source of this entry node
+     *
+     * @var XML_Atom_Source
+     */
+    protected $source = null;
+
+    /**
+     * The authors for this entry node
+     *
+     * @var array()
+     */
+    protected $authors = array();
+
+    /**
+     * The contributors for this entry node
+     *
+     * @var array()
+     */
+    protected $contributors = array();
+
+    /**
+     * The categories for this entry node
+     *
+     * @var array()
+     */
+    protected $categories = array();
+
+    /**
+     * The links for this entry node
+     *
+     * @var array()
+     */
+    protected $links = array();
+
+    // }}}
     // {{{ public function __construct()
 
     /**
