@@ -22,7 +22,7 @@ class XML_Atom_Updated extends XML_Atom_Date
      *
      * @return DOMNode the new updated date node.
      */
-    protected function_createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'updated');
