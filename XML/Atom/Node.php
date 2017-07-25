@@ -20,7 +20,7 @@ abstract class XML_Atom_Node
     const NS = 'http://www.w3.org/2005/Atom';
 
     // }}}
-    // {{{ abstract protected function _createNode()
+    // {{{ abstract protected function createNode()
 
     /**
      * Creates a node
@@ -32,7 +32,7 @@ abstract class XML_Atom_Node
     abstract protected function createNode(DOMNode $context_node);
 
     // }}}
-    // {{{ abstract protected function _buildNode()
+    // {{{ abstract protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this node

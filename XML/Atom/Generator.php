@@ -115,7 +115,7 @@ class XML_Atom_Generator extends XML_Atom_Element
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this generator node
