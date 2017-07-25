@@ -14,8 +14,9 @@ require_once 'XML/Atom/Updated.php';
  * A class used to generate the source for an Atom Feed.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Source extends XML_Atom_Element
 {
@@ -26,84 +27,84 @@ class XML_Atom_Source extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_id = '';
+    protected $id = '';
 
     /**
      * The title for this source node
      *
      * @var Atom_XML_Title
      */
-    protected $_title = null;
+    protected $title = null;
 
     /**
      * The updated date of this source node
      *
      * @var XML_Atom_Updated
      */
-    protected $_updated = null;
+    protected $updated = null;
 
     /**
      * The subtitle for this source node
      *
      * @var XML_Atom_Subtitle
      */
-    protected $_subtitle = null;
+    protected $subtitle = null;
 
     /**
      * The icon for this source node
      *
      * @var string
      */
-    protected $_icon = '';
+    protected $icon = '';
 
     /**
      * The logo for this source node
      *
      * @var string
      */
-    protected $_logo = '';
+    protected $logo = '';
 
     /**
      * The rights for this source node
      *
      * @var string
      */
-    protected $_rights = '';
+    protected $rights = '';
 
     /**
      * The generator for this source node
      *
      * @var XML_Atom_Generator
      */
-    protected $_generator = null;
+    protected $generator = null;
 
     /**
      * The authors for this feed.
      *
      * @var array()
      */
-    protected $_authors = array();
+    protected $authors = array();
 
     /**
      * The contributors for this feed.
      *
      * @var array()
      */
-    protected $_contributors = array();
+    protected $contributors = array();
 
     /**
      * The categories for this feed.
      *
      * @var array()
      */
-    protected $_categories = array();
+    protected $categories = array();
 
     /**
      * The links for this feed.
      *
      * @var array()
      */
-    protected $_links = array();
+    protected $links = array();
 
     // }}}
     // {{{ public function __construct()
@@ -135,7 +136,7 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setId($id)
     {
-        $this->_id = strval($id);
+        $this->id = strval($id);
     }
 
     // }}}
@@ -152,11 +153,11 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setTitle($title, $type = 'text')
     {
-        if (!($title instanceof XML_Atom_Title)) {
+        if (!$title instanceof XML_Atom_Title) {
             $title = new XML_Atom_Title($title, $type);
         }
 
-        $this->_title = $title;
+        $this->title = $title;
     }
 
     // }}}
@@ -172,11 +173,11 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setUpdated($updated)
     {
-        if (!($updated instanceof XML_Atom_Updated)) {
+        if (!$updated instanceof XML_Atom_Updated) {
             $updated = new XML_Atom_Updated($updated);
         }
 
-        $this->_updated = $updated;
+        $this->updated = $updated;
     }
 
     // }}}
@@ -197,7 +198,7 @@ class XML_Atom_Source extends XML_Atom_Element
             $subtitle = new XML_Atom_Subtitle($subtitle, $type);
         }
 
-        $this->_subtitle = $subtitle;
+        $this->subtitle = $subtitle;
     }
 
     // }}}
@@ -212,7 +213,7 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setIcon($icon)
     {
-        $this->_icon = strval($icon);
+        $this->icon = strval($icon);
     }
 
     // }}}
@@ -227,7 +228,7 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setLogo($logo)
     {
-        $this->_logo = strval($logo);
+        $this->logo = strval($logo);
     }
 
     // }}}
@@ -242,7 +243,7 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setRights($rights)
     {
-        $this->_rights = strval($rights);
+        $this->rights = strval($rights);
     }
 
     // }}}
@@ -260,12 +261,13 @@ class XML_Atom_Source extends XML_Atom_Element
      */
     public function setGenerator($generator, $uri = '', $version = '')
     {
-        if (!($generator === null ||
-            $generator instanceof XML_Atom_Generator)) {
+        if (!($generator === null
+            || $generator instanceof XML_Atom_Generator)
+        ) {
             $generator = new XML_Atom_Generator($generator, $uri, $version);
         }
 
-        $this->_generator = $generator;
+        $this->generator = $generator;
     }
 
     // }}}
@@ -289,7 +291,7 @@ class XML_Atom_Source extends XML_Atom_Element
             $author = new XML_Atom_Author($name, $uri, $email);
         }
 
-        $this->_authors[] = $author;
+        $this->authors[] = $author;
     }
 
     // }}}
@@ -313,7 +315,7 @@ class XML_Atom_Source extends XML_Atom_Element
             $contributor = new XML_Atom_Contributor($name, $uri, $email);
         }
 
-        $this->_contributors[] = $contributor;
+        $this->contributors[] = $contributor;
     }
 
     // }}}
@@ -330,17 +332,24 @@ class XML_Atom_Source extends XML_Atom_Element
      *
      * @return void
      */
-    public function addCategory($term, $scheme = '', $label = '',
-        $language = '')
-    {
+    public function addCategory(
+        $term,
+        $scheme = '',
+        $label = '',
+        $language = ''
+    ) {
         if ($term instanceof XML_Atom_Category) {
             $category = $term;
         } else {
-            $category = new XML_Atom_Category($term, $scheme, $label,
-                $language);
+            $category = new XML_Atom_Category(
+                $term,
+                $scheme,
+                $label,
+                $language
+            );
         }
 
-        $this->_categories[] = $category;
+        $this->categories[] = $category;
     }
 
     // }}}
@@ -365,11 +374,11 @@ class XML_Atom_Source extends XML_Atom_Element
             $link = new XML_Atom_Link($href, $rel, $type, $hreflang);
         }
 
-        $this->_links[] = $link;
+        $this->links[] = $link;
     }
 
     // }}}
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates a source node
@@ -379,14 +388,14 @@ class XML_Atom_Source extends XML_Atom_Element
      *
      * @return DOMNode the new source node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'source');
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this node.
@@ -396,51 +405,51 @@ class XML_Atom_Source extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        foreach ($this->_authors as $author) {
-            $node->appendChild($author->_getNode($node));
+        foreach ($this->authors as $author) {
+            $node->appendChild($author->getNode($node));
         }
 
-        foreach ($this->_categories as $category) {
-            $node->appendChild($category->_getNode($node));
+        foreach ($this->categories as $category) {
+            $node->appendChild($category->getNode($node));
         }
 
-        foreach ($this->_contributors as $contributor) {
-            $node->appendChild($contributor->_getNode($node));
+        foreach ($this->contributors as $contributor) {
+            $node->appendChild($contributor->getNode($node));
         }
 
-        if ($this->_generator instanceof XML_Atom_Generator) {
-            $node->appendChild($this->_generator->_getNode($node));
+        if ($this->generator instanceof XML_Atom_Generator) {
+            $node->appendChild($this->generator->getNode($node));
         }
 
-        if ($this->_icon != '') {
-            $icon_text_node = $document->createTextNode($this->_icon);
+        if ($this->icon != '') {
+            $icon_text_node = $document->createTextNode($this->icon);
             $icon_node = $document->createElementNS(XML_Atom_Node::NS, 'icon');
             $icon_node->appendChild($icon_text_node);
             $node->appendChild($icon_node);
         }
 
-        $id_text_node = $document->createTextNode($this->_id);
+        $id_text_node = $document->createTextNode($this->id);
         $id_node = $document->createElementNS(XML_Atom_Node::NS, 'id');
         $id_node->appendChild($id_text_node);
         $node->appendChild($id_node);
 
-        foreach ($this->_links as $link) {
-            $node->appendChild($link->_getNode($node));
+        foreach ($this->links as $link) {
+            $node->appendChild($link->getNode($node));
         }
 
-        if ($this->_logo != '') {
-            $logo_text_node = $document->createTextNode($this->_logo);
+        if ($this->logo != '') {
+            $logo_text_node = $document->createTextNode($this->logo);
             $logo_node = $document->createElementNS(XML_Atom_Node::NS, 'logo');
             $logo_node->appendChild($logo_text_node);
             $node->appendChild($logo_node);
         }
 
-        if ($this->_rights != '') {
-            $rights_text_node = $document->createTextNode($this->_rights);
+        if ($this->rights != '') {
+            $rights_text_node = $document->createTextNode($this->rights);
             $rights_node = $document->createElementNS(
                 XML_Atom_Node::NS,
                 'rights'
@@ -449,12 +458,12 @@ class XML_Atom_Source extends XML_Atom_Element
             $node->appendChild($rights_node);
         }
 
-        if ($this->_subtitle instanceof XML_Atom_Subtitle) {
-            $node->appendChild($this->_subtitle->_getNode($node));
+        if ($this->subtitle instanceof XML_Atom_Subtitle) {
+            $node->appendChild($this->subtitle->getNode($node));
         }
 
-        $node->appendChild($this->_title->_getNode($node));
-        $node->appendChild($this->_updated->_getNode($node));
+        $node->appendChild($this->title->getNode($node));
+        $node->appendChild($this->updated->getNode($node));
     }
 
     // }}}

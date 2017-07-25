@@ -5,9 +5,11 @@ require_once 'XML/Atom/Element.php';
 /**
  * A class used to generate a category node.
  *
+ * @category  XML
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 class XML_Atom_Category extends XML_Atom_Element
 {
@@ -18,21 +20,21 @@ class XML_Atom_Category extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_term = '';
+    protected $term = '';
 
     /**
      * The sheme of this node
      *
      * @var string
      */
-    protected $_scheme = '';
+    protected $scheme = '';
 
     /**
      * The label of this node
      *
      * @var string
      */
-    protected $_label = '';
+    protected $label = '';
 
     // }}}
     // {{{ public function __construct()
@@ -45,9 +47,12 @@ class XML_Atom_Category extends XML_Atom_Element
      * @param string $label    the label to use.
      * @param string $language the language to use.
      */
-    public function __construct($term, $scheme = '', $label = '',
-        $language = '')
-    {
+    public function __construct(
+        $term,
+        $scheme = '',
+        $label = '',
+        $language = ''
+    ) {
         $this->setTerm($term);
         $this->setScheme($scheme);
         $this->setLabel($label, $language);
@@ -65,7 +70,7 @@ class XML_Atom_Category extends XML_Atom_Element
      */
     public function setTerm($term)
     {
-        $this->_term = strval($term);
+        $this->term = strval($term);
     }
 
     // }}}
@@ -80,7 +85,7 @@ class XML_Atom_Category extends XML_Atom_Element
      */
     public function setScheme($scheme)
     {
-        $this->_scheme = strval($scheme);
+        $this->scheme = strval($scheme);
     }
 
     // }}}
@@ -96,12 +101,12 @@ class XML_Atom_Category extends XML_Atom_Element
      */
     public function setLabel($label, $language = '')
     {
-        $this->_label = strval($label);
+        $this->label = strval($label);
         $this->setLanguage($language);
     }
 
     // }}}
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates a category node
@@ -111,14 +116,14 @@ class XML_Atom_Category extends XML_Atom_Element
      *
      * @return DOMNode the new category node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'category');
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this node.
@@ -128,22 +133,22 @@ class XML_Atom_Category extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NS, 'term', $this->_term);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'term', $this->term);
 
-        if ($this->_scheme != '') {
+        if ($this->scheme != '') {
             $node->setAttributeNS(
                 XML_Atom_Node::NS,
                 'scheme',
-                $this->_scheme
+                $this->scheme
             );
         }
 
-        if ($this->_label != '') {
-            $node->setAttributeNS(XML_Atom_Node::NS, 'label', $this->_label);
+        if ($this->label != '') {
+            $node->setAttributeNS(XML_Atom_Node::NS, 'label', $this->label);
         }
     }
 

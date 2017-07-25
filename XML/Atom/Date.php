@@ -5,8 +5,6 @@
  */
 require_once 'XML/Atom/Element.php';
 
-// {{{ class XML_Atom_Date
-
 /**
  * Abstract base class used to describe a date in an Atom document
  *
@@ -15,9 +13,9 @@ require_once 'XML/Atom/Element.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @link      http://pear.php.net/package/XML_Atom
+ * @link      https://github.com/silverorange/xml-atom
  */
 abstract class XML_Atom_Date extends XML_Atom_Element
 {
@@ -30,7 +28,7 @@ abstract class XML_Atom_Date extends XML_Atom_Element
      *
      * @see XML_Atom_Date::setDate()
      */
-    protected $_date;
+    protected $date;
 
     // }}}
     // {{{ public function __construct()
@@ -65,15 +63,15 @@ abstract class XML_Atom_Date extends XML_Atom_Element
      */
     public function setDate($date)
     {
-        if (!($date instanceof DateTime)) {
+        if (!$date instanceof DateTime) {
             $date = new DateTime($date);
         }
 
-        $this->_date = $date;
+        $this->date = $date;
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds and creates the Atom XML nodes required by this date
@@ -85,11 +83,11 @@ abstract class XML_Atom_Date extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        $date_string = $this->_date->format('c');
+        $date_string = $this->date->format('c');
         $text_node = $document->createTextNode($date_string);
 
         $node->appendChild($text_node);
@@ -97,7 +95,5 @@ abstract class XML_Atom_Date extends XML_Atom_Element
 
     // }}}
 }
-
-// }}}
 
 ?>

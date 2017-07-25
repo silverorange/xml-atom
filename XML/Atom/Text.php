@@ -6,8 +6,9 @@ require_once 'XML/Atom/Element.php';
  * An abstract class used to model any node that represents any type of text.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 abstract class XML_Atom_Text extends XML_Atom_Element
 {
@@ -18,14 +19,14 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      *
      * @var string
      */
-    protected $_text = '';
+    protected $text = '';
 
     /**
      * The type of this node
      *
      * @var string
      */
-    protected $_type = '';
+    protected $type = '';
 
     // }}}
     // {{{ public function __construct()
@@ -56,7 +57,7 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      */
     public function setText($text)
     {
-        $this->_text = strval($text);
+        $this->text = strval($text);
     }
 
     // }}}
@@ -71,11 +72,11 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      */
     public function setType($type)
     {
-        $this->_type = strval($type);
+        $this->type = strval($type);
     }
 
     // }}}
-    // {{{ protected function _buildNode()
+    // {{{ protected function buildNode()
 
     /**
      * Builds and creates the Atom XML nodes required by this text
@@ -90,13 +91,13 @@ abstract class XML_Atom_Text extends XML_Atom_Element
      *
      * @return void
      */
-    protected function _buildNode(DOMNode $node)
+    protected function buildNode(DOMNode $node)
     {
         $document = $node->ownerDocument;
 
-        $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->_type);
+        $node->setAttributeNS(XML_Atom_Node::NS, 'type', $this->type);
 
-        $text_node = $document->createTextNode($this->_text);
+        $text_node = $document->createTextNode($this->text);
         $node->appendChild($text_node);
     }
 

@@ -5,8 +5,6 @@
  */
 require_once 'XML/Atom/Person.php';
 
-// {{{ class XML_Atom_Author
-
 /**
  * An {@link XML_Atom_Person} that indicates the author of an entry or feed
  *
@@ -18,15 +16,15 @@ require_once 'XML/Atom/Person.php';
  * @category  XML
  * @package   XML_Atom
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
- * @link      http://pear.php.net/package/XML_Atom
+ * @link      https://github.com/silverorange/xml-atom
  * @see       XML_Atom_Entry::addAuthor()
  * @see       XML_Atom_Feed::addAuthor()
  */
 class XML_Atom_Author extends XML_Atom_Person
 {
-    // {{{ protected function _createNode()
+    // {{{ protected function createNode()
 
     /**
      * Creates an author DOMElement node for this author
@@ -36,7 +34,7 @@ class XML_Atom_Author extends XML_Atom_Person
      *
      * @return DOMNode the author DOMElement node.
      */
-    protected function _createNode(DOMNode $context_node)
+    protected function createNode(DOMNode $context_node)
     {
         $document = $context_node->ownerDocument;
         return $document->createElementNS(XML_Atom_Node::NS, 'author');
@@ -44,7 +42,5 @@ class XML_Atom_Author extends XML_Atom_Person
 
     // }}}
 }
-
-// }}}
 
 ?>

@@ -4,8 +4,9 @@
  * A abstract class used to model a generic XML node.
  *
  * @package   XML_Atom
- * @copyright 2008-2016 silverorange
+ * @copyright 2008-2017 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
+ * @link      https://github.com/silverorange/xml-atom
  */
 abstract class XML_Atom_Node
 {
@@ -19,7 +20,7 @@ abstract class XML_Atom_Node
     const NS = 'http://www.w3.org/2005/Atom';
 
     // }}}
-    // {{{ abstract protected function _createNode()
+    // {{{ abstract protected function createNode()
 
     /**
      * Creates a node
@@ -28,10 +29,10 @@ abstract class XML_Atom_Node
      *
      * @return XML_Atom_Node
      */
-    abstract protected function _createNode(DOMNode $context_node);
+    abstract protected function createNode(DOMNode $context_node);
 
     // }}}
-    // {{{ abstract protected function _buildNode()
+    // {{{ abstract protected function buildNode()
 
     /**
      * Builds all the XML information contained inside this node
@@ -41,10 +42,10 @@ abstract class XML_Atom_Node
      *
      * @return void
      */
-    abstract protected function _buildNode(DOMNode $node);
+    abstract protected function buildNode(DOMNode $node);
 
     // }}}
-    // {{{ protected function _getNode()
+    // {{{ protected function getNode()
 
     /**
      * Gets a built copy of the current node.
@@ -53,10 +54,10 @@ abstract class XML_Atom_Node
      *
      * @return DOMNode a built copy of the current node.
      */
-    protected function _getNode(DOMNode $context_node)
+    protected function getNode(DOMNode $context_node)
     {
-        $node = $this->_createNode($context_node);
-        $this->_buildNode($node);
+        $node = $this->createNode($context_node);
+        $this->buildNode($node);
         return $node;
     }
 
