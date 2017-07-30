@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $feed = new XML_Atom_Feed('http://example.com/', 'Example Feed');
 
