@@ -1,8 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Entry.php';
-require_once 'XML/Atom/Source.php';
-
 /**
  * A class used to generate all the entires in a feed.
  *

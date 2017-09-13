@@ -1,15 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Element.php';
-require_once 'XML/Atom/Author.php';
-require_once 'XML/Atom/Category.php';
-require_once 'XML/Atom/Contributor.php';
-require_once 'XML/Atom/Generator.php';
-require_once 'XML/Atom/Link.php';
-require_once 'XML/Atom/Subtitle.php';
-require_once 'XML/Atom/Title.php';
-require_once 'XML/Atom/Updated.php';
-
 /**
  * A class used to generate the source for an Atom Feed.
  *

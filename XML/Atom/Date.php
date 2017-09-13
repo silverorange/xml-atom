@@ -3,7 +3,6 @@
 /**
  * Element class definition.
  */
-require_once 'XML/Atom/Element.php';
 
 /**
  * Abstract base class used to describe a date in an Atom document

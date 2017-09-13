@@ -1,7 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Text.php';
-
 /**
  * A class used to generate a subtitle node.
  *

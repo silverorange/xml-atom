@@ -1,7 +1,5 @@
 <?php
 
-require_once 'XML/Atom/Element.php';
-
 /**
  * An abstract class used to model any node that represents any type of text.
  *
