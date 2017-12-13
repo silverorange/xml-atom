@@ -397,7 +397,7 @@ class XML_Atom_Entry extends XML_Atom_Element
         $document = new DOMDocument('1.0', $encoding);
         $document->formatOutput = true;
 
-        $name = (strlen($prefix) > 0) ? $prefix . ':entry' : 'entry';
+        $name = ($prefix != '') ? $prefix . ':entry' : 'entry';
         $entry = $document->createElementNS(XML_Atom_Node::NS, $name);
         $document->appendChild($entry);
 

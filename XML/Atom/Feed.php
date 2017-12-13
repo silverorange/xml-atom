@@ -48,7 +48,7 @@ class XML_Atom_Feed extends XML_Atom_Source
         $document = new DOMDocument('1.0', $encoding);
         $document->formatOutput = true;
 
-        $name = (strlen($prefix) > 0) ? $prefix . ':feed' : 'feed';
+        $name = ($prefix != '') ? $prefix . ':feed' : 'feed';
         $feed = $document->createElementNS(XML_Atom_Node::NS, $name);
         $document->appendChild($feed);
 
